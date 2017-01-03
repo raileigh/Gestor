@@ -1,0 +1,26 @@
+services:
+  gestor.front.principalService:
+    class: FrontEndBundle\Services\principalService
+    arguments: ["@service_container"]
+
+  gestor.front.empleadoService:
+    class: FrontEndBundle\Services\empleadoService
+    arguments: ["@service_container"]
+
+  gestor.front.loginService:
+    class: FrontEndBundle\Services\loginService
+    arguments: ["@service_container"]
+
+  gestor.front.principalService:
+    class: FrontEndBundle\Services\principalService
+    arguments: ["@service_container"]
+
+  gestor.front.registrarService:
+    class: FrontEndBundle\Services\registrarService
+    arguments: ["@service_container"]
+
+  gestor.front.comprobarUsuarioService:
+    class: FrontEndBundle\Services\comprobarUsuarioService
+    arguments: ["@service_container"]
+
+

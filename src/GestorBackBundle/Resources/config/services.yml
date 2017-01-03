@@ -1,4 +1,0 @@
-services:
-#    gestor_back.example:
-#        class: GestorBackBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

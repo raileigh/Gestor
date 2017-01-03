@@ -1,15 +1,16 @@
-gestor_cnt:
-    resource: "@GestorCntBundle/Resources/config/routing.yml"
-    prefix:   /
+# gestor_front:
+  #  resource: "@FrontEndBundle/Resources/config/routing.yml"
+    #prefix:   /
 
-gestor_front:
-    resource: "@GestorFrontBundle/Resources/config/routing.yml"
-    prefix:   /
-
-gestor_back:
-    resource: "@GestorBackBundle/Resources/config/routing.yml"
-    prefix:   /
+#gestor_back:
+    #resource: "@BackEndBundle/Resources/config/routing.yml"
+    #prefix:   /
 
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+front:
+    resource: "@FrontEndBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

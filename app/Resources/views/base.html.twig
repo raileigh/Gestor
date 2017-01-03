@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-            <link href="{{ asset('bundles/framework/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-            <link href="{{ asset('bundles/framework/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
-            
+            <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+            <body background="{{ asset('images/pizarra2.jpg') }}" class="mifondo">
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
              <meta charset="UTF-8"/>
-            <script src="{{ asset('bundles/framework/js/jquery-2.2.0.js') }}"></script>
-            <script src="{{ asset('bundles/framework/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('js/jquery-2.2.0.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
             
      </head>
-     <body>
-
-        {% block header %}
-
-        {% endblock %}
-
-
-       
-        {% block contenido %}
-
+     <body background="{{ asset('bundles/framework/images/pizarra2.jpg') }}" class="mifondo">
+        
+         {% block contenido %}
+          
         {% endblock %}
 
     </body>

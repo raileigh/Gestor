@@ -1,3 +1,0 @@
-gestor_back_homepage:
-    path:     /
-    defaults: { _controller: GestorBackBundle:Default:index }

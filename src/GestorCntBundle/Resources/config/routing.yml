@@ -1,3 +1,0 @@
-gestor_cnt_homepage:
-    path:     /
-    defaults: { _controller: GestorCntBundle:Default:index }
