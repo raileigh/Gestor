@@ -17,23 +17,24 @@ class DefaultController extends Controller
     public function indexAction($slug)
     {
 
-       /* Servicios de comprobación
-        // $datosPost = $this->get('request')->request->all();
-        $comprobarUsuario = $this->getcomprobarUsuario($datosPost); //true o false
+       // Servicios de comprobación
+        $datosPost = $this->get('request')->request->all();
+        $comprobarUsuario = $this->get("gestor.front.comprobarUsuarioService")->comprobarUsuario($datosPost);
+        //true o false
         
         if ($comprobarUsuario == true){
         
-        */
+        
         $twig = $this->get("gestor.front.".$slug."Service")->getTwig();
         $datos = $this->get("gestor.front.".$slug."Service")->getDatos();
-       /*
+       
         }else{
 
             $twig = "login";
             $datos = null;
         }
 
-        */
+        
         
         return $this->render("FrontEndBundle:default:".$twig.".html.twig",array("datos"=> $datos));
     }
