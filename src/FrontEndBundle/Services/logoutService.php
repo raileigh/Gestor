@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
-class registrarService{
+class logoutService{
 
 	protected $datos;
 
@@ -21,11 +21,10 @@ class registrarService{
 
 		return $this->datos;
 	}
-
 public function getTwig(){
 
 		
-		return "FrontEndBundle:Default:registrar.html.twig";
+		return "FrontEndBundle:Default:login.html.twig";
 	}
 
 

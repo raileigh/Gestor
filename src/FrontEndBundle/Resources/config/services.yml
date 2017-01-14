@@ -11,6 +11,10 @@ services:
     class: FrontEndBundle\Services\loginService
     arguments: ["@service_container"]
 
+  gestor.front.logoutService:
+    class: FrontEndBundle\Services\logoutService
+    arguments: ["@service_container"]
+
   gestor.front.principalService:
     class: FrontEndBundle\Services\principalService
     arguments: ["@service_container"]

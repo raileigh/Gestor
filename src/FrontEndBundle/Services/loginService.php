@@ -17,14 +17,14 @@ class loginService{
 
 	public function getDatos(){
 
-		$this->datos="Esto es un dato";
+		$this->datos=[];
 
 		return $this->datos;
 	}
 public function getTwig(){
 
 		
-		return "login";
+		return "FrontEndBundle:Default:login.html.twig";
 	}
 
 

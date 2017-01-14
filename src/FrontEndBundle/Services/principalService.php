@@ -17,7 +17,7 @@ class principalService{
 
 	public function getDatos(){
 
-		$this->datos="Esto es un dato";
+		$this->datos=[];
 
 		return $this->datos;
 	}
@@ -25,7 +25,7 @@ class principalService{
 	public function getTwig(){
 
 		
-		return "principal";
+		return "FrontEndBundle:Default:principal.html.twig";
 	}
 
 
