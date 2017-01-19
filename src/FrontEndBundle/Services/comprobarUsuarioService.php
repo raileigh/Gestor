@@ -23,8 +23,8 @@ class comprobarUsuarioService{
 		$session = $this->c->get("session");// creo la variable sesión y le digo que me captura la sesion que esta abierta
 
     	$nombre = $session->get("nombre");
-
-		if ($nombre==null) {
+    
+    	if ($nombre==null) {
 
 			if (!isset($datosPost["login"])) //hare un campo hidden con el nombre login en el formulario de login que sera en chivato que me dice si viene de login o ha puesto a mano la url
 			{

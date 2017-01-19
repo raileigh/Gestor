@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class logoutService{
+	
 
 	protected $datos;
 
@@ -16,17 +17,19 @@ class logoutService{
 	}
 
 	public function getDatos(){
+		echo "entra en el getDatos";
 
 		$this->datos=[];
 
 		return $this->datos;
 	}
-public function getTwig(){
 
-		
+
+	public function getTwig(){
+
+		echo "entra en el getTwig";
+
 		return "FrontEndBundle:Default:login.html.twig";
 	}
-
-
 
 }

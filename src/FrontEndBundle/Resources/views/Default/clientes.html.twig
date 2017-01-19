@@ -1,0 +1,63 @@
+{% extends "::base.html.twig"%}
+{% block contenido%}
+<form>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/gestor/web/app_dev.php/principal">GtrGYM</a>
+    </div>
+   <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><img src="{{asset('images/yo3.jpg')}}" alt="yo!" style="padding:7px" class="rounded-circle"/></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{path ('front', {'slug':'logout'})}}">Salir  <img src="{{asset('images/salir.png')}}" alt="salir"></a></li>
+            <li><a href="#">Perfil  <img src="{{asset('images/perfil.png')}}" alt="perfil"></a></li>
+           </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+ </nav>
+<row class="col-xs-12">
+  <div class="panel panel-success">
+      <!-- Default panel contents -->
+      <div class="panel-heading" style="text-align: center; font-weight: bold; margin-right:3px">CLIENTES
+      </div>
+      <!-- Table -->
+      <table class="table">
+        <TR>
+          <TH>NOMBRE</TH>
+          <TH>APELLIDOS</TH>
+          <TH>TELÉFONO</TH>
+          <TH>DIRECCIÓN</TH>
+          <TH>DNI</TH>
+        </TR>
+        {% for datos in tablaUsuarios %}
+        <TR>
+          <TD>{{ datos.Nombre }}</TD>
+          <TD>{{ datos.Apellidos }}</TD>
+          <TD>{{ datos.Teléfono }}</TD>
+          <TD>{{ datos.Dirección }}</TD>
+          <TD>{{ datos.DNI }}</TD>
+        </TR>
+        {% endfor %}
+      </table>
+    </div>
+</row>
+</form>
+</body>
+{% endblock %}  
+ 

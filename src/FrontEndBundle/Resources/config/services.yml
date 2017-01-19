@@ -27,4 +27,9 @@ services:
     class: FrontEndBundle\Services\comprobarUsuarioService
     arguments: ["@service_container"]
 
+  gestor.front.clientesService:
+    class: FrontEndBundle\Services\clientesService
+    arguments: ["@service_container"]
+
+
 
