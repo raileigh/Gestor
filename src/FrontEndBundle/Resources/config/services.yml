@@ -30,6 +30,21 @@ services:
   gestor.front.clientesService:
     class: FrontEndBundle\Services\clientesService
     arguments: ["@service_container"]
+  
+  gestor.front.horarioService:
+    class: FrontEndBundle\Services\horarioService
+    arguments: ["@service_container"]
 
+  gestor.front.luzService:
+    class: FrontEndBundle\Services\luzService
+    arguments: ["@service_container"]
+
+  gestor.front.aguaService:
+    class: FrontEndBundle\Services\aguaService
+    arguments: ["@service_container"]
+
+  gestor.front.proveedoresService:
+    class: FrontEndBundle\Services\proveedoresService
+    arguments: ["@service_container"]
 
 

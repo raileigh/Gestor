@@ -1,7 +1,6 @@
 {% extends "::base.html.twig"%}
-
 {% block contenido %}
-  
+  <body background="{{ asset('images/triangle2.jpg') }}" class="mifondo">
   <form method="POST">
     <div class="form-group, col-xs-4, col-sm-12" style="padding-top:10%; text-align:center">
       <div class="form-group, col-xs-6, col-sm-10, col-lg-10" style="padding-left:28%">
@@ -22,6 +21,6 @@
           <a class="btn btn-default" style="margin-top:10px" href="{{path ('front', {'slug':'registrar'})}}" role="button">REGISTRAR</a>
           </div>
       </div>
-    </form>
+  </form>
     
 {% endblock %}

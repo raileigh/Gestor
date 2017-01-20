@@ -44,6 +44,8 @@ class DefaultController extends Controller
                 
             
             }
+
+           
             
             if ($slug=="logout") {
 
@@ -55,7 +57,7 @@ class DefaultController extends Controller
 
              }
 
-         
+     
         }else{
             
             if($slug==="registrar")

@@ -1,7 +1,8 @@
 {% extends "::base.html.twig"%}
 {% block contenido%}
-<form>
-<nav class="navbar navbar-inverse">
+<body background="{{ asset('images/triangle1.jpg') }}" class="mifondo">
+<form method="POST">
+ <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -11,25 +12,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">GtrGYM</a>
+      <a class="navbar-brand">GtrGYM</a>
     </div>
    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Empleados <span class="sr-only">(current)</span></a></li>
-        <li class="active"><a href="#">Clientes <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Calendario de clases</a></li>
+        <li><a href="/gestor/web/app_dev.php/empleado">Empleados <span class="sr-only">(current)</span></a></li>
+        <li><a href="/gestor/web/app_dev.php/clientes">Clientes <span class="sr-only">(current)</span></a></li>
+        <li><a href="/gestor/web/app_dev.php/horario">Horario de clases</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servicios <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li>
-              <a href="#"><img src="{{asset('images/bombilla.png')}}" alt="luz"> Luz</a>
+              <a href="/gestor/web/app_dev.php/luz"><img src="{{asset('images/bombilla.png')}}" alt="luz"> Luz</a>
             </li>
             <li>
-              <a href="#"><img src="{{asset('images/gota.png')}}" alt="luz"> Agua</a>
+              <a href="/gestor/web/app_dev.php/agua"><img src="{{asset('images/gota.png')}}" alt="agua"> Agua</a>
             </li>
             <li>
-              <a href="#"><img src="{{asset('images/servicios.png')}}" alt="luz"> Proveedores</a>
+              <a href="/gestor/web/app_dev.php/proveedores"><img src="{{asset('images/servicios.png')}}" alt="proveedores"> Proveedores</a>
             </li>
           </ul>
         </li>
@@ -72,16 +73,17 @@
   <div class="col-xs-6">
     <div class="panel panel-success">
       <!-- Default panel contents -->
-      <div class="panel-heading" style="text-align: center; font-weight: bold">CLIENTES
+      <div class="panel-heading" style="text-align: center; font-weight: bold">CLIENTES NUEVOS DEL DIA
       </div>
       <!-- Table -->
-      <table class="table">
+      <div class="table-responsive">
+      <table class="table" style="text-align: center">
         <TR>
-          <TH>NOMBRE</TH>
-          <TH>APELLIDOS</TH>
-          <TH>TELÉFONO</TH>
-          <TH>DIRECCIÓN</TH>
-          <TH>DNI</TH>
+          <TH style="text-align: center">NOMBRE</TH>
+          <TH style="text-align: center">APELLIDOS</TH>
+          <TH style="text-align: center">TELÉFONO</TH>
+          <TH style="text-align: center">DIRECCIÓN</TH>
+          <TH style="text-align: center">DNI</TH>
         </TR>
         {% for datos in tablaUsuarios %}
         <TR>
@@ -93,14 +95,16 @@
         </TR>
         {% endfor %}
       </table>
+      </div>
     </div>
   </div>
   <div class="col-xs-6">
-   <div class="panel panel-primary">
+   <div class="panel panel-danger">
       <!-- Default panel contents -->
       <div class="panel-heading" style="text-align: center; font-weight: bold">CLASES DEL DÍA
       </div>
       <!-- Table -->
+      <div class="table-responsive">
       <table class="table" style="text-align: center">
         <TR>
           <TH style="text-align: center">HORA</TH>
@@ -115,6 +119,7 @@
         </TR>
         {% endfor %}
       </table>
+      </div>
     </div>
   </div>
   <div class="col-xs-6">
@@ -123,6 +128,7 @@
       <div class="panel-heading" style="text-align: center; font-weight: bold">EMPLEADOS DEL DÍA
       </div>
       <!-- Table -->
+      <div class="table-responsive" style="max-wi">
         <table class="table" style="text-align: center">
           <TR>
             <TH style="text-align: center">NOMBRE</TH>
@@ -137,6 +143,7 @@
           </TR>
           {% endfor %}
         </table>
+        </div>
     </div>
   </div>
 </row>
