@@ -63,6 +63,19 @@ class principalService{
 
      	$this->datos["tablaEmpleados"] = $tablaEmpleados;
 
+     	$inesperadoLuz = "1";
+
+     	$this->datos["inesperadoLuz"] = $inesperadoLuz;
+
+     	$inesperadoAgua = "2";
+
+     	$this->datos["inesperadoAgua"] = $inesperadoAgua;
+
+     	$inesperadoProveedor = "4";
+
+     	$this->datos["inesperadoProveedor"] = $inesperadoProveedor;
+
+
 
 		return $this->datos;
 	}

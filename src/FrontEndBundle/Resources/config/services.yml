@@ -46,5 +46,11 @@ services:
   gestor.front.proveedoresService:
     class: FrontEndBundle\Services\proveedoresService
     arguments: ["@service_container"]
+  
+  gestor.front.archivosAdjuntosService:
+    class: FrontEndBundle\Services\archivosAdjuntosService
+    arguments: ["@service_container"]
+
+
 
 
