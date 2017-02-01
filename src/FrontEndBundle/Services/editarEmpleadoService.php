@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
-class archivosAdjuntosService{
+class editarEmpleadoService{
 
 	protected $datos;
 
@@ -17,17 +17,15 @@ class archivosAdjuntosService{
 
 	public function getDatos(){
 
-		
-     	$this->datos=[];
-
+		$this->datos=[];
 
 		return $this->datos;
 	}
-	
+
 public function getTwig(){
 
 		
-		return "FrontEndBundle:Default:archivosAdjuntos.html.twig";
+		return "FrontEndBundle:Default:editarEmpleado.html.twig";
 	}
 
 

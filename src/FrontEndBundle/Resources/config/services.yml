@@ -51,6 +51,52 @@ services:
     class: FrontEndBundle\Services\archivosAdjuntosService
     arguments: ["@service_container"]
 
+  gestor.front.perfilService:
+    class: FrontEndBundle\Services\perfilService
+    arguments: ["@service_container"]
+
+  gestor.front.editarPerfilService:
+    class: FrontEndBundle\Services\editarPerfilService
+    arguments: ["@service_container"]
+
+  gestor.front.editarEmpleadoService:
+    class: FrontEndBundle\Services\editarEmpleadoService
+    arguments: ["@service_container"]
+
+  gestor.front.editarClienteService:
+    class: FrontEndBundle\Services\editarClienteService
+    arguments: ["@service_container"]
+
+  gestor.front.editarHorarioService:
+    class: FrontEndBundle\Services\editarHorarioService
+    arguments: ["@service_container"]
+
+  gestor.front.editarLuzService:
+    class: FrontEndBundle\Services\editarLuzService
+    arguments: ["@service_container"]
+
+  gestor.front.editarAguaService:
+    class: FrontEndBundle\Services\editarAguaService
+    arguments: ["@service_container"]
+
+  gestor.front.editarProveedorService:
+    class: FrontEndBundle\Services\editarProveedorService
+    arguments: ["@service_container"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
