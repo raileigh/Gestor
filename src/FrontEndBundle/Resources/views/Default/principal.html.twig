@@ -91,13 +91,11 @@
                 <tr>
                   <th style="text-align: center">NOMBRE</th>
                   <th style="text-align: center">APELLIDOS</th>
-                  <th style="text-align: center">FUNCIÓN</th>
                 </tr>
-              {% for datos in tablaEmpleados %}
+              {% for empleado in datos.resultadoEmpleado %}
                 <tr>
-                  <td>{{ datos.Nombre }}</td>
-                  <td>{{ datos.Apellidos }}</td>
-                  <td>{{ datos.Función }}</td>
+                  <td>{{ empleado.nombre }}</td>
+                  <td>{{ empleado.apellidos }}</td>
                 </tr>
               {% endfor %}
               </table>
@@ -119,13 +117,13 @@
                   <th style="text-align: center">DIRECCIÓN</th>
                   <th style="text-align: center">DNI</th>
                 </tr>
-                {% for datos in tablaUsuarios %}
+                {% for cliente in datos.resultadoCliente %}
                 <tr>
-                  <td>{{ datos.Nombre }}</td>
-                  <td>{{ datos.Apellidos }}</td>
-                  <td>{{ datos.Teléfono }}</td>
-                  <td>{{ datos.Dirección }}</td>
-                  <td>{{ datos.DNI }}</td>
+                  <td>{{ cliente.nombre }}</td>
+                  <td>{{ cliente.apellidos }}</td>
+                  <td>{{ cliente.telefono }}</td>
+                  <td>{{ cliente.direccion }}</td>
+                  <td>{{ cliente.dni }}</td>
                 </tr>
                 {% endfor %}
               </table>
@@ -145,11 +143,11 @@
                   <th style="text-align: center">CLASE</th>
                   <th style="text-align: center">PROFESOR/A</th>
                 </tr>
-                {% for datos in tablaClases %}
+                {% for clase in datos.resultadoClase %}
                 <tr>
-                  <td>{{ datos.Hora }}</td>
-                  <td>{{ datos.Clase }}</td>
-                  <td>{{ datos.Profesor }}</td>
+                  <td>{{ clase.hora }}</td>
+                  <td>{{ clase.tipo }}</td>
+                  <td>{{ clase.profesor }}</td>
                 </tr>
                 {% endfor %}
               </table>
@@ -186,9 +184,9 @@
           <th style="text-align: center"><a style ="color:black" href="/gestor/web/app_dev.php/agua">AGUA</a></th>
         </tr>
         <tr>
-          <td style="color:red; font-weight: bold">{{ inesperadoLuz }}</td>
-          <td style="color:red; font-weight: bold">{{ inesperadoProveedor }}</td>
-          <td style="color:red; font-weight: bold">{{ inesperadoAgua }}</td>
+          <td style="color:red; font-weight: bold">{{ datos.gastosInesperados.luz }}</td>
+          <td style="color:red; font-weight: bold">{{ datos.gastosInesperados.proveedor }}</td>
+          <td style="color:red; font-weight: bold">{{ datos.gastosInesperados.agua }}</td>
          </tr>
       </table>
     </div>

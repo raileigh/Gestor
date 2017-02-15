@@ -22,7 +22,7 @@ class comprobarUsuarioService{
 		// Comprobar sesion
 		$session = $this->c->get("session");// creo la variable sesión y le digo que me captura la sesion que esta abierta
 
-    	$nombre = $session->get("nombre");
+    	$nombre = $session->get("usuario")["nombre"];
     
     	if ($nombre==null) {
 
@@ -48,7 +48,8 @@ class comprobarUsuarioService{
 					//LLegados al else sabemos que el usuario está en la bd por eso $validar es true enviando la variable al controlador diciédole que lo envie a la vista correspondiente y creando la sesión del usuario seteándole el nombre a la sesión.
 					
 					$validar=true;
-					$session->set("nombre", $usuario->getNombre());
+					$session->set("usuario", array("nombre"=> $usuario->getNombre(),"id"=> $usuario->getId()));
+					
 				}
 
 			}

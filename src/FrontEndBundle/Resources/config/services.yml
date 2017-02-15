@@ -53,7 +53,7 @@ services:
 
   gestor.front.perfilService:
     class: FrontEndBundle\Services\perfilService
-    arguments: ["@service_container"]
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
 
   gestor.front.editarPerfilService:
     class: FrontEndBundle\Services\editarPerfilService
