@@ -10,22 +10,30 @@ class luzService{
 
 	protected $datos;
 
-	public function construct(Container $c){
+	public function __construct(Container $c){
 
+		
 		$this->c = $c;
+
 	}
 
 	public function getDatos(){
 
-		$tablaLuz= [
-		array("Empresa" => "IBERDROLA.S.A.","Concepto" => "Suministro de Luz","Periodo" => "01.01.2017 - 31.01.2017","Importe"=> "300,20€"),
-    	array("Empresa" => "IBERDROLA.S.A.","Concepto" => "Suministro de Luz","Periodo" => "01.02.2017 - 31.02.2017","Importe"=> "330,00€"),
-    	array("Empresa" => "IBERDROLA.S.A.","Concepto" => "Suministro de Luz","Periodo" => "01.03.2017 - 31.03.2017","Importe"=> "305,10€"),
-     
-		];
+		$emr = $this->c->get('doctrine')->getEntityManager();
+		$conexion = $emr->getConnection();
+		$sql = "
+				SELECT *
+
+				FROM gasto
+
+				WHERE tipo=2
+
+				";
+
+		$resultado = $conexion->executeQuery($sql)->fetchAll();
 
 
-     	$this->datos["tablaLuz"] = $tablaLuz;
+     	$this->datos["gastosLuz"] = $resultado;
 
 
 		return $this->datos;

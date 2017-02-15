@@ -33,8 +33,8 @@ class DefaultController extends Controller
         
         
         $destino = $this->get("gestor.front.".$slug."Service")->getTwig();
-        $datos = $this->get("gestor.front.".$slug."Service")->getDatos();
-       
+        $datos = $this->get("gestor.front.".$slug."Service")->getDatos($datosPost);
+        $datos = array("datos" => $datos);
 
             if (isset($datosPost["login"])||$slug==="login") //hare un campo hidden con el nombre login en el formulario de login que sera en chivato que me dice si viene de login o ha puesto a mano la url
             {
@@ -76,7 +76,7 @@ class DefaultController extends Controller
 
          }
 
-        return $this->$tipoRetorno($destino,$datos);
+         return $this->$tipoRetorno($destino,$datos);
     }
 
 }

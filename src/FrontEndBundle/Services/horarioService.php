@@ -10,27 +10,34 @@ class horarioService{
 
 	protected $datos;
 
-	public function construct(Container $c){
+	public function __construct(Container $c){
 
+		
 		$this->c = $c;
+
 	}
 
 	public function getDatos(){
 
-		$tablaClases= [
-		array("Hora" => "9:00","Clase" => "BodyCombat","Profesor"  => "Neus Martínez"),
-		array("Hora" => "10:00","Clase" => "CicloIndoor","Profesor"  => "Cristian Medraño"),
-		array("Hora" => "12:00","Clase" => "Boxeo","Profesor"  => "Ruth Sansano"),
-		array("Hora" => "18:00","Clase" => "Gimnasia Rítmica","Profesor"  => "Belén Jiménez"),
-		array("Hora" => "20:00","Clase" => "Zumba","Profesor"  => "Javier Navarro"),
-		array("Hora" => "21:00","Clase" => "Pilates","Profesor"  => "Rubén Córcoles"),
-    	
-        
-		];
+		$emr = $this->c->get('doctrine')->getEntityManager();
+		$conexion = $emr->getConnection();
+		$sql = "
+				SELECT c.hora,tc.nombre as clase,c.profesor
+
+				FROM clase c
+
+				INNER JOIN tipo tc ON c.tipo = tc.id
+
+				WHERE tipo
+
+				";
+
+		$resultado = $conexion->executeQuery($sql)->fetchAll();
 
 
-     	$this->datos["tablaClases"] = $tablaClases;
-     	
+     	$this->datos["clase"] = $resultado;
+
+
 		return $this->datos;
 	}
 

@@ -24,7 +24,7 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255, unique=true)
+     * @ORM\Column(name="nombre", type="string", length=255, unique=false)
      */
     private $nombre;
 
