@@ -70,6 +70,13 @@ class Empleado
      */
     private $usuario;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status;
+
 
     /**
      * Get id
@@ -240,5 +247,29 @@ class Empleado
     public function getUsuario()
     {
         return $this->usuario;
+    }
+
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Empleado
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

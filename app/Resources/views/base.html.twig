@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-            <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-            <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
-            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-             <meta charset="UTF-8"/>
-            <script src="{{ asset('js/jquery-2.2.0.js') }}"></script>
-            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('js/app.js') }}"></script>
-           
-            
-      </head>
+<head>
+  <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  <meta charset="UTF-8"/>
+  <script src="{{ asset('js/jquery-2.2.0.js') }}"></script>
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
-         {% block contenido %}
+
+</head>
+
+<body>
 
 
-          
-        {% endblock %}
+ {% block contenido %}
 
-    </body>
+
+
+ {% endblock %}
+
+ <div class="spinner" style="position:absolute;display:none;margin-left:25%;margin-top:25%;"><img src="{{asset('images/carga.gif')}}"</div>
+</body>
 </html>

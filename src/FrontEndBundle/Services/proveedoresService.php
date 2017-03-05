@@ -17,29 +17,51 @@ class proveedoresService{
 
 	}
 
-	public function getDatos(){
+	public function getDatos($datosPost){
 
-		$emr = $this->c->get('doctrine')->getEntityManager();
-		$conexion = $emr->getConnection();
+		$em = $this->c->get('doctrine')->getEntityManager();
+		$conexion = $em->getConnection();
 		$sql = "
-				SELECT *
+		SELECT empresa,concepto,periodo,importe
 
-				FROM gasto
+		FROM gasto
 
-				WHERE tipo=3
+		WHERE tipo = 3
 
-				";
+		";
 
-		$resultado = $conexion->executeQuery($sql)->fetchAll();
+		$filas = $conexion->executeQuery($sql)->fetchAll();
+		
+		$cabeceras = array('EMPRESA','CONCEPTO','PERIODO','IMPORTE');
 
 
-     	$this->datos["gastosProveedor"] = $resultado;
+		$this->datos["tablaProveedores"]["filas"] = $filas;
+		$this->datos["tablaProveedores"]["cabeceras"] = $cabeceras;
+
+		$qbGasto =  $em->getConnection();
+     	$sqlGasto = "
+
+                SELECT Sum(importe) as valor
+
+                FROM gasto
+
+                WHERE tipo = 3  AND periodo BETWEEN '2017-01-01' AND '2017-12-31'
+
+               
+
+                ";
+
+
+		$gasto = $qbGasto->executeQuery($sqlGasto)->fetchAll()[0];
+		
+
+		$this->datos["gastoProveedores"]= $gasto;
 
 
 		return $this->datos;
 	}
 	
-public function getTwig(){
+	public function getTwig(){
 
 		
 		return "FrontEndBundle:Default:proveedores.html.twig";

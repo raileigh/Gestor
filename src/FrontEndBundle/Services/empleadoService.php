@@ -17,23 +17,77 @@ class empleadoService{
 
 	}
 
-	public function getDatos(){
+	public function getDatos($datosPost){
 
-		$emr = $this->c->get('doctrine')->getEntityManager();
-		$conexion = $emr->getConnection();
+		$em = $this->c->get('doctrine')->getEntityManager();
+		$conexion = $em->getConnection();
 		$sql = "
-				SELECT *
+				SELECT nombre,apellidos,telefono,direccion,dni,salario
 
 				FROM empleado
 
-				WHERE id
-
 				";
 
-		$resultado = $conexion->executeQuery($sql)->fetchAll();
+		$filas = $conexion->executeQuery($sql)->fetchAll();
+		
+		$cabeceras = array('NOMBRE','APELLIDOS','TELÉFONO','DIRECCIÓN','DNI','SALARIO');
 
 
-     	$this->datos["empleado"] = $resultado;
+     	$this->datos["tablaEmpleados"]["filas"] = $filas;
+     	$this->datos["tablaEmpleados"]["cabeceras"] = $cabeceras;
+
+     	$qbBaja =  $em->getConnection();
+     	$sqlBaja = "
+
+                SELECT Count(status) as valor
+
+                FROM empleado
+
+                WHERE status = 1
+
+                ";
+
+
+		$baja = $qbBaja->executeQuery($sqlBaja)->fetchAll()[0];
+		
+
+		$this->datos["bajaEmpleados"]= $baja;
+
+		$qbAlta =  $em->getConnection();
+     	$sqlAlta = "
+
+                SELECT Count(status) as valor
+
+                FROM empleado
+
+                WHERE status = 2
+
+                ";
+
+
+		$alta = $qbAlta->executeQuery($sqlAlta)->fetchAll()[0];
+		
+
+		$this->datos["altaEmpleados"]= $alta;
+
+
+		$qbVacaciones =  $em->getConnection();
+     	$sqlVacaciones = "
+
+                SELECT Count(status) as valor
+
+                FROM empleado
+
+                WHERE status = 3
+
+                ";
+
+
+		$vacaciones = $qbVacaciones->executeQuery($sqlVacaciones)->fetchAll()[0];
+		
+
+		$this->datos["vacacionesEmpleados"]= $vacaciones;
+
 
 
 		return $this->datos;

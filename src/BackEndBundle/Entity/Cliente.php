@@ -22,6 +22,13 @@ class Cliente
     private $id;
 
     /**
+     * @var \Date
+     *
+     * @ORM\Column(name="fecha_alta", type="date")
+     */
+    private $fechaAlta;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=255)
@@ -63,6 +70,27 @@ class Cliente
      */
     private $usuario;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="cuota", type="integer")
+     */
+    private $cuota;
+
+    /**
+     * @var \Date
+     *
+     * @ORM\Column(name="fecha_baja", type="date")
+     */
+    private $fechaBaja;
+
 
     /**
      * Get id
@@ -72,6 +100,29 @@ class Cliente
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set fechaAlta
+     *
+     * @param \Date $fechaAlta
+     * @return Cliente
+     */
+    public function setFechaAlta($fechaAlta)
+    {
+        $this->fechaAlta = $fechaAlta;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaAlta
+     *
+     * @return \Date
+     */
+    public function getFechaAlta()
+    {
+        return $this->fechaAlta;
     }
 
     /**
@@ -210,5 +261,74 @@ class Cliente
     public function getUsuario()
     {
         return $this->usuario;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Cliente
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set cuota
+     *
+     * @param integer $cuota
+     * @return Cliente
+     */
+    public function setCuota($cuota)
+    {
+        $this->cuota = $cuota;
+
+        return $this;
+    }
+
+    /**
+     * Get cuota
+     *
+     * @return integer
+     */
+    public function getCuota()
+    {
+        return $this->cuota;
+    }
+
+     /**
+     * Set fechaBaja
+     *
+     * @param \Date $fechaBaja
+     * @return Cliente
+     */
+    public function setFechaBaja($fechaBaja)
+    {
+        $this->fechaBaja = $fechaBaja;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaBaja
+     *
+     * @return \Date
+     */
+    public function getFechaBaja()
+    {
+        return $this->fechaBaja;
     }
 }

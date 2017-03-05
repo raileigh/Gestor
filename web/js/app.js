@@ -8,16 +8,28 @@ $('#myTabs a').click(function (e) {
 // Mostrar y ocultar elementos en diferentes twig para editar------------------
 
 $(document).ready(function(){
-   $("#editar").click(function(){
-      
-   		$("#editarPerfil").css("display", "block");
-   		$("input").prop('disabled', false);
+ $("#editar").click(function(){
+  
+   $("#editarPerfil").css("display", "block");
+   $("input").prop('disabled', false);
 
 
-   		if ($("#editarPerfil").css("display", "block")){
+   if ($("#editarPerfil").css("display", "block")){
 
-   			$("#editar").css("display", "none");
-		}	
-   		
-	});
+    $("#editar").css("display", "none");
+  }	
+  
+});
 }); 
+
+// spinner
+
+$("a").click(function(){
+
+  $(".spinner").css("display","block");
+
+
+})
+
+
+

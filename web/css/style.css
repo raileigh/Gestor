@@ -1,3 +1,17 @@
+.spinner{
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+background-color: grey;
+opacity: 0.7;
+position: absolute;
+top: 0px;
+left: 17px;
+width: 0px;
+height: 33px;
+
+}
 
 .mifondo{
 background-attachment: fixed;

@@ -17,30 +17,32 @@ class horarioService{
 
 	}
 
-	public function getDatos(){
+	public function getDatos($datosPost){
 
-		$emr = $this->c->get('doctrine')->getEntityManager();
-		$conexion = $emr->getConnection();
+		$em = $this->c->get('doctrine')->getEntityManager();
+		$conexion = $em->getConnection();
 		$sql = "
-				SELECT c.hora,tc.nombre as clase,c.profesor
+		SELECT c.hora,tc.nombre as clase,c.profesor
 
-				FROM clase c
+		FROM clase c
 
-				INNER JOIN tipo tc ON c.tipo = tc.id
+		INNER JOIN tipo tc ON c.tipo = tc.id
 
-				WHERE tipo
+		WHERE tipo
 
-				";
+		";
 
-		$resultado = $conexion->executeQuery($sql)->fetchAll();
+		$filas = $conexion->executeQuery($sql)->fetchAll();
+		
+		$cabeceras = array('HORA','CLASE','PROFESOR');
 
 
-     	$this->datos["clase"] = $resultado;
+		$this->datos["tablaClase"]["filas"] = $filas;
+		$this->datos["tablaClase"]["cabeceras"] = $cabeceras;
 
 
 		return $this->datos;
 	}
-
 public function getTwig(){
 
 		

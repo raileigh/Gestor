@@ -17,29 +17,51 @@ class luzService{
 
 	}
 
-	public function getDatos(){
+	public function getDatos($datosPost){
 
-		$emr = $this->c->get('doctrine')->getEntityManager();
-		$conexion = $emr->getConnection();
+		$em = $this->c->get('doctrine')->getEntityManager();
+		$conexion = $em->getConnection();
 		$sql = "
-				SELECT *
+		SELECT empresa,concepto,periodo,importe
 
-				FROM gasto
+		FROM gasto
 
-				WHERE tipo=2
+		WHERE tipo = 2
 
-				";
+		";
 
-		$resultado = $conexion->executeQuery($sql)->fetchAll();
+		$filas = $conexion->executeQuery($sql)->fetchAll();
+		
+		$cabeceras = array('EMPRESA','CONCEPTO','PERIODO','IMPORTE');
 
 
-     	$this->datos["gastosLuz"] = $resultado;
+		$this->datos["tablaLuz"]["filas"] = $filas;
+		$this->datos["tablaLuz"]["cabeceras"] = $cabeceras;
+
+		$qbGasto =  $em->getConnection();
+     	$sqlGasto = "
+
+                SELECT Sum(importe) as valor
+
+                FROM gasto
+
+                WHERE tipo = 2  AND periodo BETWEEN '2017-01-01' AND '2017-12-31'
+
+               
+
+                ";
+
+
+		$gasto = $qbGasto->executeQuery($sqlGasto)->fetchAll()[0];
+		
+
+		$this->datos["gastoLuz"]= $gasto;
 
 
 		return $this->datos;
 	}
 	
-public function getTwig(){
+	public function getTwig(){
 
 		
 		return "FrontEndBundle:Default:luz.html.twig";
