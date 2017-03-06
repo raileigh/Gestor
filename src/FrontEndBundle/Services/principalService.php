@@ -24,7 +24,7 @@ class principalService{
 
         FROM empleado
 
-        LIMIT 3
+        LIMIT 5
 
         ";
 
@@ -37,7 +37,7 @@ class principalService{
 
         FROM cliente
 
-        LIMIT 3
+        LIMIT 5
 
         ";
 
@@ -51,7 +51,7 @@ class principalService{
 
         FROM clase
 
-        LIMIT 3
+        LIMIT 5
 
         ";
 
@@ -199,10 +199,10 @@ class principalService{
                 
             }
 
-            $fila = array($meses[$i] , $gasto, $ingreso );
-            array_push($datosGrafica, $fila);
         }
 
+            $fila = array($meses[$i] , $gasto, $ingreso );
+            array_push($datosGrafica, $fila);
     }
 
    
