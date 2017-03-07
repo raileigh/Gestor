@@ -12,7 +12,6 @@ class aguaService{
 
 	public function __construct(Container $c){
 
-		
 		$this->c = $c;
 
 	}
@@ -22,46 +21,40 @@ class aguaService{
 		$em = $this->c->get('doctrine')->getEntityManager();
 		$conexion = $em->getConnection();
 		$sql = "
-				SELECT empresa,concepto,periodo,importe
+		SELECT empresa,concepto,periodo,importe
 
-				FROM gasto
+		FROM gasto
 
-				WHERE tipo = 1
+		WHERE tipo = 1
 
-				";
+		";
 
 		$filas = $conexion->executeQuery($sql)->fetchAll();
-		
 		$cabeceras = array('EMPRESA','CONCEPTO','PERIODO','IMPORTE');
 
 
-     	$this->datos["tablaAgua"]["filas"] = $filas;
-     	$this->datos["tablaAgua"]["cabeceras"] = $cabeceras;
+		$this->datos["tablaAgua"]["filas"] = $filas;
+		$this->datos["tablaAgua"]["cabeceras"] = $cabeceras;
 
-     	$qbGasto =  $em->getConnection();
-     	$sqlGasto = "
+		$qbGasto =  $em->getConnection();
+		$sqlGasto = "
 
-                SELECT Sum(importe) as valor
+		SELECT Sum(importe) as valor
 
-                FROM gasto
+		FROM gasto
 
-                WHERE tipo = 1  AND periodo BETWEEN '2017-01-01' AND '2017-12-31'
+		WHERE tipo = 1  AND periodo BETWEEN '2017-01-01' AND '2017-12-31'
 
-               
-
-                ";
+		";
 
 
 		$gasto = $qbGasto->executeQuery($sqlGasto)->fetchAll()[0];
-		
-
 		$this->datos["gastoAgua"]= $gasto;
-
 
 		return $this->datos;
 	}
 	
-public function getTwig(){
+	public function getTwig(){
 
 		
 		return "FrontEndBundle:Default:agua.html.twig";

@@ -33,21 +33,19 @@ class horarioService{
 		";
 
 		$filas = $conexion->executeQuery($sql)->fetchAll();
-		
 		$cabeceras = array('HORA','CLASE','PROFESOR');
 
 
 		$this->datos["tablaClase"]["filas"] = $filas;
 		$this->datos["tablaClase"]["cabeceras"] = $cabeceras;
 
-
 		return $this->datos;
-	}
-public function getTwig(){
 
-		
+	}
+	
+	public function getTwig(){
+
 		return "FrontEndBundle:Default:horario.html.twig";
 	}
-
 
 }

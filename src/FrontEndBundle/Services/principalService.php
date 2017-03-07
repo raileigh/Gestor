@@ -162,12 +162,11 @@ class principalService{
 
             ";
 
-
             $grafica[$tabla] = $qbGrafica->executeQuery($sqlGrafica)->fetchAll();
 
         }
 
-      
+
 
         $datosGrafica = [['MES', 'GASTOS', 'INGRESOS']];
         $meses = array('Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
@@ -195,17 +194,13 @@ class principalService{
 
                 $ingreso = (float)$grafica["ingreso"][$z]["cantidad"];
 
-
-                
             }
 
         }
 
-            $fila = array($meses[$i] , $gasto, $ingreso );
-            array_push($datosGrafica, $fila);
+        $fila = array($meses[$i] , $gasto, $ingreso );
+        array_push($datosGrafica, $fila);
     }
-
-   
 
     $this->datos["grafica"]= $datosGrafica;
 
@@ -220,7 +215,6 @@ class principalService{
 
     WHERE fecha_alta BETWEEN '".$fechas["inicio"]."' AND '".$fechas["fin"]."'
 
-
     ";
 
 
@@ -234,7 +228,7 @@ class principalService{
 public function getTwig(){
 
 
-  return "FrontEndBundle:Default:principal.html.twig";
+    return "FrontEndBundle:Default:principal.html.twig";
 }
 
 public function getFechas($fecha,$temporalidad){
@@ -261,7 +255,6 @@ public function getFechas($fecha,$temporalidad){
             # code...
         break;
     }
-
 
     return  array('inicio' =>$inicio , 'fin' =>$fin);
 

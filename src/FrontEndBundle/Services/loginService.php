@@ -21,12 +21,10 @@ class loginService{
 
 		return $this->datos;
 	}
-public function getTwig(){
 
-		
+	public function getTwig(){
+
 		return "FrontEndBundle:Default:login.html.twig";
 	}
-
-
 
 }

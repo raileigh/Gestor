@@ -31,7 +31,6 @@ class luzService{
 		";
 
 		$filas = $conexion->executeQuery($sql)->fetchAll();
-		
 		$cabeceras = array('EMPRESA','CONCEPTO','PERIODO','IMPORTE');
 
 
@@ -39,22 +38,20 @@ class luzService{
 		$this->datos["tablaLuz"]["cabeceras"] = $cabeceras;
 
 		$qbGasto =  $em->getConnection();
-     	$sqlGasto = "
+		$sqlGasto = "
 
-                SELECT Sum(importe) as valor
+		SELECT Sum(importe) as valor
 
-                FROM gasto
+		FROM gasto
 
-                WHERE tipo = 2  AND periodo BETWEEN '2017-01-01' AND '2017-12-31'
+		WHERE tipo = 2  AND periodo BETWEEN '2017-01-01' AND '2017-12-31'
 
-               
+		
 
-                ";
+		";
 
 
 		$gasto = $qbGasto->executeQuery($sqlGasto)->fetchAll()[0];
-		
-
 		$this->datos["gastoLuz"]= $gasto;
 
 
@@ -66,7 +63,5 @@ class luzService{
 		
 		return "FrontEndBundle:Default:luz.html.twig";
 	}
-
-
 
 }

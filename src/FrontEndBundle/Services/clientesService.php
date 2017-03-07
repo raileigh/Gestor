@@ -22,35 +22,33 @@ class clientesService{
 		$em = $this->c->get('doctrine')->getEntityManager();
 		$conexion = $em->getConnection();
 		$sql = "
-				SELECT nombre,apellidos,telefono,direccion,dni
+		SELECT nombre,apellidos,telefono,direccion,dni
 
-				FROM cliente
+		FROM cliente
 
-				";
+		";
 
 		$filas = $conexion->executeQuery($sql)->fetchAll();
-		
-
 		$cabeceras = array('NOMBRE','APELLIDOS','TELÉFONO','DIRECCIÓN','DNI');
 
 
-     	$this->datos["tablaClientes"]["filas"] = $filas;
-     	$this->datos["tablaClientes"]["cabeceras"] = $cabeceras;
+		$this->datos["tablaClientes"]["filas"] = $filas;
+		$this->datos["tablaClientes"]["cabeceras"] = $cabeceras;
 
 
-     	$qbStats =  $em->getConnection();
-     	$fecha = new \Datetime();
-     	$fechas = $this->getFechas($fecha);
-     	$sqlStats = "
+		$qbStats =  $em->getConnection();
+		$fecha = new \Datetime();
+		$fechas = $this->getFechas($fecha);
+		$sqlStats = "
 
-                SELECT Sum(if(status = 1, 1, 0)) AS baja,
-                	   Sum(if(status = 2, 1, 0)) AS alta
+		SELECT Sum(if(status = 1, 1, 0)) AS baja,
+		Sum(if(status = 2, 1, 0)) AS alta
 
-                FROM cliente
+		FROM cliente
 
-                WHERE fecha_baja BETWEEN '".$fechas["inicio"]."' AND '".$fechas["fin"]."'  OR fecha_alta BETWEEN '".$fechas["inicio"]."' AND '".$fechas["fin"]."'
+		WHERE fecha_baja BETWEEN '".$fechas["inicio"]."' AND '".$fechas["fin"]."'  OR fecha_alta BETWEEN '".$fechas["inicio"]."' AND '".$fechas["fin"]."'
 
-                ";
+		";
 
 
 		$Stats = $qbStats->executeQuery($sqlStats)->fetchAll()[0];
@@ -63,20 +61,20 @@ class clientesService{
 		return $this->datos;
 	}
 	
-public function getTwig(){
+	public function getTwig(){
 
 		
 		return "FrontEndBundle:Default:clientes.html.twig";
 	}
 
-public function getFechas($fecha){
+	public function getFechas($fecha){
 
 		$fecha->modify('first day of this month');
-     	$inicio = $fecha->format('Y-m-d');
-     	$fecha->modify('last day of this month');
-     	$fin = $fecha->format('Y-m-d');
+		$inicio = $fecha->format('Y-m-d');
+		$fecha->modify('last day of this month');
+		$fin = $fecha->format('Y-m-d');
 
-     	return  array('inicio' =>$inicio , 'fin' =>$fin);
+		return  array('inicio' =>$inicio , 'fin' =>$fin);
 
 	}
 

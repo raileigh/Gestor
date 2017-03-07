@@ -8,7 +8,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class logoutService{
 	
-
 	protected $datos;
 
 	public function construct(Container $c){
@@ -23,7 +22,6 @@ class logoutService{
 
 		return $this->datos;
 	}
-
 
 	public function getTwig(){
 

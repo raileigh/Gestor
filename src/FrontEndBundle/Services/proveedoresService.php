@@ -39,24 +39,18 @@ class proveedoresService{
 		$this->datos["tablaProveedores"]["cabeceras"] = $cabeceras;
 
 		$qbGasto =  $em->getConnection();
-     	$sqlGasto = "
+		$sqlGasto = "
 
-                SELECT Sum(importe) as valor
+		SELECT Sum(importe) as valor
 
-                FROM gasto
+		FROM gasto
 
-                WHERE tipo = 3  AND periodo BETWEEN '2017-01-01' AND '2017-12-31'
+		WHERE tipo = 3  AND periodo BETWEEN '2017-01-01' AND '2017-12-31'
 
-               
-
-                ";
-
+		";
 
 		$gasto = $qbGasto->executeQuery($sqlGasto)->fetchAll()[0];
-		
-
 		$this->datos["gastoProveedores"]= $gasto;
-
 
 		return $this->datos;
 	}
@@ -66,7 +60,5 @@ class proveedoresService{
 		
 		return "FrontEndBundle:Default:proveedores.html.twig";
 	}
-
-
 
 }

@@ -69,7 +69,7 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  <row class="col-xs-12">
+  <row>
     <div class="col-xs-6">
       <div>
         <!-- Nav tabs -->
@@ -162,27 +162,19 @@
         <div class="panel-heading">
           <h3 class="panel-title" style="font-weight: bold; text-align: center">ESTADÍSTICAS</h3>
         </div>
-        <div class="panel-body" style="padding-top:10px; height:225px; font-weight: bold; text-align: center">
+        <div class="panel-body" style="padding-top:20px; height:225px; font-weight: bold; text-align: center">
           {% if datos.resultadoTotal > 0 %}
-            <div class="col-xs-2" style="padding-left:2%; padding-top:20px; font-size: 100px; color:blue; font-weight: bold">
-              
+            <div class="col-xs-2" style="padding-left:2%; padding-top:20px; font-size: 90px; color:blue; font-weight: bold">
               {{ datos.resultadoTotal }}€
-
             </div>
-
           {% else %}
-
-            <div class="col-xs-2" style="padding-left:2%; padding-top:20px; font-size: 100px; color:red; font-weight: bold">
-              
-
+            <div class="col-xs-2" style="padding-left:2%; padding-top:20px; font-size: 90px; color:red; font-weight: bold">
               {{ datos.resultadoTotal }}€
-              
             </div>
-
           {% endif %}
-          <div class="col-xs-1" style="padding-top:60px;" ><img style="margin-left:1280%; padding-left:40%"src="{{asset('images/estadisticaPc.png')}}" alt="Beneficio" /></div>
-          <div class="col-xs-2" style="padding-top:20px; padding-left: 45%; margin-left: 5%; font-size: 100px; color:blue; font-weight: bold">{{ datos.nuevosClientes }}</div>
-          <div class="col-xs-1"><img style="margin-right: 50%; padding-top:400%; padding-left:85%"src="{{asset('images/ClienteNuevo.png')}}" alt="ClientesNuevos" /></div>
+          <div class="col-xs-1" style="padding-top:60px;" ><img style="margin-left:1000%; padding-left:40%"src="{{asset('images/estadisticaPc.png')}}" alt="Beneficio" /></div>
+          <div class="col-xs-2" style="padding-top:20px; padding-left: 40%; margin-left: 5%; font-size: 90px; color:blue; font-weight: bold">{{ datos.nuevosClientes }}</div>
+          <div class="col-xs-1"><img style="padding-top:350%; padding-left:400%"src="{{asset('images/ClienteNuevo.png')}}" alt="ClientesNuevos" /></div>
         </div>
       </div>
     </div>
@@ -194,12 +186,12 @@
           <h3 class="panel-title" style="font-weight: bold; text-align: center">GASTOS INESPERADOS</h3>
         </div>
         <div class="panel-body" style="padding-top:25px; height:263px; font-weight: bold; text-align: center">
-          <div  class="col-xs-2" style="font-size: 150px; padding-left:7%; color:red; font-weight: bold">{{ datos.gastosInesperados.luz }}</div>
-          <div class="col-xs-1"><a id="enlaceSpinner" style="margin-left:-50%; margin-top:30px" href="/gestor/web/app_dev.php/luz"><img src="{{asset('images/bombilla.png')}}" alt="luz"></a></div>
-          <div   class="col-xs-2"style="font-size: 150px; padding-left:18%; color:red; font-weight: bold">{{ datos.gastosInesperados.proveedor }}</div>
-          <div class="col-xs-1"><a id="enlaceSpinner" style="padding-left:250%; padding-top:10%" href="/gestor/web/app_dev.php/proveedores"><img src="{{asset('images/servicios.png')}}" alt="servicios"></a></div>
-          <div  class="col-xs-2" style="font-size: 150px; padding-left:25%; color:red; font-weight: bold">{{ datos.gastosInesperados.agua }}</div>
-          <div class="col-xs-1"><a id="enlaceSpinner" style="padding-left:220%; padding-top:10px" href="/gestor/web/app_dev.php/agua"><img src="{{asset('images/gota.png')}}" alt="agua"></a></div>
+          <div  class="col-xs-2" style="font-size: 150px; padding-left:3%; color:red; font-weight: bold">{{ datos.gastosInesperados.luz }}</div>
+          <div class="col-xs-1"><a id="enlaceSpinner" href="/gestor/web/app_dev.php/luz"><img src="{{asset('images/bombilla1.png')}}" style="padding-top:80px" alt="luz"></a></div>
+          <div   class="col-xs-2"style="font-size: 150px; padding-left:14%; color:red; font-weight: bold">{{ datos.gastosInesperados.proveedor }}</div>
+          <div class="col-xs-1"><a id="enlaceSpinner" href="/gestor/web/app_dev.php/proveedores"><img src="{{asset('images/servicios1.png')}}" style="padding-top:80px; padding-left:60px" alt="servicios"></a></div>
+          <div  class="col-xs-2" style="font-size: 150px; padding-left:22%; color:red; font-weight: bold">{{ datos.gastosInesperados.agua }}</div>
+          <div class="col-xs-1"><a id="enlaceSpinner" href="/gestor/web/app_dev.php/agua"><img src="{{asset('images/gota1.png')}}" style="padding-left:60px; padding-top:80px" alt="agua"></a></div>
         </div>
       </div>
     </div>
@@ -208,39 +200,35 @@
         <!-- Default panel contents -->
         <div class="panel-heading" style="text-align: center; font-weight: bold">GRÁFICA 2017</div>
         <div id="chart_div" style="padding-top:10px">
-
         </div>
       </div>
     </div>
   </row>
 </form>
 <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
+  google.charts.load('current', {'packages':['bar']});
+  google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+  function drawChart() {
 
-        var datos = {{datos.grafica|json_encode|raw}}
+    var datos = {{datos.grafica|json_encode|raw}}
 
-        var grafico = google.visualization.arrayToDataTable(datos);
+    var grafico = google.visualization.arrayToDataTable(datos);
 
-       
+    var options = {
+      chart: {
+      },
+      bars: 'vertical',
+      vAxis: {format: 'decimal'},
+      height: 250,
+      colors: ['#FF0000', '#0000FF']
+    };
 
-        var options = {
-          chart: {
-          },
-          bars: 'vertical',
-          vAxis: {format: 'decimal'},
-          height: 250,
-          colors: ['#FF0000', '#0000FF']
-        };
+    var chart = new google.charts.Bar(document.getElementById('chart_div'));
 
-        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+    chart.draw(grafico, google.charts.Bar.convertOptions(options));
 
-        chart.draw(grafico, google.charts.Bar.convertOptions(options));
-
-        
-      }
+  }
 </script>
 </body>
 {% endblock %}  

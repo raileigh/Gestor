@@ -36,27 +36,20 @@ class perfilService{
 
 			}
 			
-
-
 		$conexion = $this->em->getConnection();
 		$id = $this->s->get("usuario")["id"];
 		$sql = "SELECT * FROM usuario WHERE id = ".$id;
 		$resultado = $conexion->executeQuery($sql)->fetchAll();
-
-
-     	$this->datos["usuario"] = $resultado;
-
+		$this->datos["usuario"] = $resultado;
 
 		return $this->datos;
 	}
 
 	
-public function getTwig(){
+	public function getTwig(){
 
 		
 		return "FrontEndBundle:Default:perfil.html.twig";
 	}
-
-
 
 }

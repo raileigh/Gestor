@@ -22,16 +22,15 @@ class comprobarUsuarioService{
 		// Comprobar sesion
 		$session = $this->c->get("session");// creo la variable sesión y le digo que me captura la sesion que esta abierta
 
-    	$nombre = $session->get("usuario")["nombre"];
-    
-    	if ($nombre==null) {
+		$nombre = $session->get("usuario")["nombre"];
+		
+		if ($nombre==null) {
 
 			if (!isset($datosPost["login"])) //hare un campo hidden con el nombre login en el formulario de login que sera en chivato que me dice si viene de login o ha puesto a mano la url
 			{
 				
 				$validar=false;
 
-			
 			}else{
 			//aquí tengo que comprobar que el tio existe en BD para meterlo  a principal
 				$em=$this->c->get('doctrine')->getEntityManager();
@@ -41,7 +40,6 @@ class comprobarUsuarioService{
 				if (is_object($usuario)==false){
 					
 					$validar=false;
-
 
 				}else{
 
@@ -60,12 +58,9 @@ class comprobarUsuarioService{
 
 		}
 
-
-
 		return $validar;
 
 	}
-
 
 }
 

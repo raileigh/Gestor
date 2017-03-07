@@ -22,82 +22,72 @@ class empleadoService{
 		$em = $this->c->get('doctrine')->getEntityManager();
 		$conexion = $em->getConnection();
 		$sql = "
-				SELECT nombre,apellidos,telefono,direccion,dni,salario
+		SELECT nombre,apellidos,telefono,direccion,dni,salario
 
-				FROM empleado
+		FROM empleado
 
-				";
+		";
 
 		$filas = $conexion->executeQuery($sql)->fetchAll();
-		
 		$cabeceras = array('NOMBRE','APELLIDOS','TELÉFONO','DIRECCIÓN','DNI','SALARIO');
 
 
-     	$this->datos["tablaEmpleados"]["filas"] = $filas;
-     	$this->datos["tablaEmpleados"]["cabeceras"] = $cabeceras;
+		$this->datos["tablaEmpleados"]["filas"] = $filas;
+		$this->datos["tablaEmpleados"]["cabeceras"] = $cabeceras;
 
-     	$qbBaja =  $em->getConnection();
-     	$sqlBaja = "
+		$qbBaja =  $em->getConnection();
+		$sqlBaja = "
 
-                SELECT Count(status) as valor
+		SELECT Count(status) as valor
 
-                FROM empleado
+		FROM empleado
 
-                WHERE status = 1
+		WHERE status = 1
 
-                ";
+		";
 
 
 		$baja = $qbBaja->executeQuery($sqlBaja)->fetchAll()[0];
-		
-
 		$this->datos["bajaEmpleados"]= $baja;
 
 		$qbAlta =  $em->getConnection();
-     	$sqlAlta = "
+		$sqlAlta = "
 
-                SELECT Count(status) as valor
+		SELECT Count(status) as valor
 
-                FROM empleado
+		FROM empleado
 
-                WHERE status = 2
+		WHERE status = 2
 
-                ";
+		";
 
 
 		$alta = $qbAlta->executeQuery($sqlAlta)->fetchAll()[0];
-		
-
 		$this->datos["altaEmpleados"]= $alta;
 
 
 		$qbVacaciones =  $em->getConnection();
-     	$sqlVacaciones = "
+		$sqlVacaciones = "
 
-                SELECT Count(status) as valor
+		SELECT Count(status) as valor
 
-                FROM empleado
+		FROM empleado
 
-                WHERE status = 3
+		WHERE status = 3
 
-                ";
+		";
 
 
 		$vacaciones = $qbVacaciones->executeQuery($sqlVacaciones)->fetchAll()[0];
-		
-
 		$this->datos["vacacionesEmpleados"]= $vacaciones;
-
-
 
 		return $this->datos;
 	}
 
-public function getTwig(){
+	public function getTwig(){
 
 		
 		return "FrontEndBundle:Default:empleado.html.twig";
 	}
-
 
 }

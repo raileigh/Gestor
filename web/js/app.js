@@ -5,7 +5,7 @@ $('#myTabs a').click(function (e) {
   $(this).tab('show');
 });
 
-// Mostrar y ocultar elementos en diferentes twig para editar------------------
+// Mostrar y ocultar elementos del twig de perfil para editar------------------
 
 $(document).ready(function(){
  $("#editar").click(function(){

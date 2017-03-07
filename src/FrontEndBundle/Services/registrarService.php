@@ -22,12 +22,9 @@ class registrarService{
 		return $this->datos;
 	}
 
-public function getTwig(){
+	public function getTwig(){
 
-		
 		return "FrontEndBundle:Default:registrar.html.twig";
 	}
-
-
 
 }
