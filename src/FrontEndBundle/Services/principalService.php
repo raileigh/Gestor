@@ -141,7 +141,7 @@ class principalService{
         $this->datos["ingreso"] = $ingreso;
 
 
-        $resultadoTotal = $ingreso - $gastoEmpleados - $gastoExterno;
+        $resultadoTotal = $ingreso - $gastoExterno - $gastoEmpleados;
         $this->datos["resultadoTotal"] = $resultadoTotal;
 
 
@@ -168,28 +168,27 @@ class principalService{
 
 
 
-        $datosGrafica = [['MES', 'GASTOS', 'INGRESOS']];
-        $meses = array('Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
+        $datosGrafica = [['MES', 'GASTOS', 'INGRESOS']];//creo la array con los tres elementos que necesito
+        $meses = array('ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC');//creo la array con los meses del año
 
         for ($i=0; $i < sizeof($meses); $i++) {
-            $fila = []; 
-            
 
+            $fila = []; // creo la array la array que se va a ciclar y me va a dar los datos necesarios
             $gasto = 0;//inicializamos el gasto por si no lo encuentra
             for ($j=0; $j < sizeof($grafica["gasto"]); $j++) { 
 
 
-             if (isset($grafica["gasto"][$j]) && $grafica["gasto"][$j]["mes"] == ($i+1)){
+               if (isset($grafica["gasto"][$j]) && $grafica["gasto"][$j]["mes"] == ($i+1)){
 
-               $gasto = (float)$grafica["gasto"][$j]["cantidad"];
+                 $gasto = (float)$grafica["gasto"][$j]["cantidad"];
 
-           }
-       }
+             }
+         }
 
             $ingreso = 0;//inicializamos el gasto por si no lo encuentra
             for ($z=0; $z < sizeof($grafica["ingreso"]); $z++) { 
 
-             if (isset($grafica["ingreso"][$z]) && $grafica["ingreso"][$z]["mes"] == ($i+1)){
+               if (isset($grafica["ingreso"][$z]) && $grafica["ingreso"][$z]["mes"] == ($i+1)){
 
 
                 $ingreso = (float)$grafica["ingreso"][$z]["cantidad"];
@@ -198,7 +197,7 @@ class principalService{
 
         }
 
-        $fila = array($meses[$i] , $gasto, $ingreso );
+        $fila = array($meses[$i] , $gasto, $ingreso);
         array_push($datosGrafica, $fila);
     }
 
@@ -225,13 +224,13 @@ class principalService{
     return $this->datos;
 }
 
-public function getTwig(){
+    public function getTwig(){
 
 
     return "FrontEndBundle:Default:principal.html.twig";
-}
+    }
 
-public function getFechas($fecha,$temporalidad){
+    public function getFechas($fecha,$temporalidad){
 
     switch ($temporalidad) {
 
@@ -246,7 +245,6 @@ public function getFechas($fecha,$temporalidad){
         case 'year':
 
         $inicio = date('Y-m-d',strtotime(date('Y-01-01')));
-        
         $fin = date('Y-m-d',strtotime(date('Y-12-31')));
 
         break;
@@ -258,6 +256,6 @@ public function getFechas($fecha,$temporalidad){
 
     return  array('inicio' =>$inicio , 'fin' =>$fin);
 
-}
+    }
 
 }

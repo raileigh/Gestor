@@ -24,13 +24,13 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gastos Externos <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
-                <a id="enlaceSpinner" href="/gestor/web/app_dev.php/luz"><img src="{{asset('images/bombilla.png')}}" alt="luz"> Luz</a>
+                <a id="enlaceSpinner" href="/gestor/web/app_dev.php/luz"><img src="{{asset('images/bombilla2.png')}}" alt="luz"> Luz</a>
               </li>
               <li>
-                <a id="enlaceSpinner" href="/gestor/web/app_dev.php/agua"><img src="{{asset('images/gota.png')}}" alt="agua"> Agua</a>
+                <a id="enlaceSpinner" href="/gestor/web/app_dev.php/agua"><img src="{{asset('images/gota2.png')}}" alt="agua"> Agua</a>
               </li>
               <li>
-                <a id="enlaceSpinner" href="/gestor/web/app_dev.php/proveedores"><img src="{{asset('images/servicios.png')}}" alt="proveedores"> Proveedores</a>
+                <a id="enlaceSpinner" href="/gestor/web/app_dev.php/proveedores"><img src="{{asset('images/servicios2.png')}}" alt="proveedores"> Proveedores</a>
               </li>
             </ul>
           </li>
@@ -71,137 +71,27 @@
   </nav>
   <row>
     <div class="col-xs-6">
-      <div>
-        <!-- Nav tabs -->
-        <ul class="nav nav-pills nav-justified active" role="tablist">
-          <li class="active" role="presentation"><a style ="color:black; font-weight: bold" href="#empleadosDia" aria-controls="empleadosDia" role="tab" data-toggle="tab" aria-expanded="true">EMPLEADOS DEL DÍA</a></li>
-          <li role="presentation"><a style ="color:black; font-weight: bold" href="#clientesNuevos" aria-controls="clientesNuevos" role="tab" data-toggle="tab">NUEVOS CLIENTES</a></li>
-          <li role="presentation"><a style ="color:black; font-weight: bold" href="#clasesDia" aria-controls="clasesDia" role="tab" data-toggle="tab">CLASES DEL DÍA</a></li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane fade active in" id="empleadosDia">
-            <div class="panel panel-info">
-              <!-- Default panel contents -->
-              <div class="panel-heading" style="text-align: center; font-weight: bold">EMPLEADOS DEL DÍA
-              </div>
-              <!-- Table -->
-              <div class="table-responsive" style="max-with">
-                <table class="table" style="text-align: center">
-                  <tr>
-                    <th style="text-align: center">NOMBRE</th>
-                    <th style="text-align: center">APELLIDOS</th>
-                  </tr>
-                  {% for empleado in datos.resultadoEmpleado %}
-                    <tr>
-                      <td>{{ empleado.nombre }}</td>
-                      <td>{{ empleado.apellidos }}</td>
-                    </tr>
-                  {% endfor %}
-                </table>
-              </div>
-            </div>
-          </div>
-          <div role="tabpanel" class="tab-pane fade" id="clientesNuevos">
-            <div class="panel panel-info">
-              <!-- Default panel contents -->
-              <div class="panel-heading" style="text-align: center; font-weight: bold">NUEVOS CLIENTES DEL DÍA
-              </div>
-              <!-- Table -->
-              <div class="table-responsive">
-                <table class="table" style="text-align: center">
-                  <tr>
-                    <th style="text-align: center">NOMBRE</th>
-                    <th style="text-align: center">APELLIDOS</th>
-                    <th style="text-align: center">TELÉFONO</th>
-                    <th style="text-align: center">DIRECCIÓN</th>
-                    <th style="text-align: center">DNI</th>
-                  </tr>
-                  {% for cliente in datos.resultadoCliente %}
-                    <tr>
-                      <td>{{ cliente.nombre }}</td>
-                      <td>{{ cliente.apellidos }}</td>
-                      <td>{{ cliente.telefono }}</td>
-                      <td>{{ cliente.direccion }}</td>
-                      <td>{{ cliente.dni }}</td>
-                    </tr>
-                  {% endfor %}
-                </table>
-              </div>
-            </div>
-          </div>
-          <div role="tabpanel" class="tab-pane fade" id="clasesDia">
-            <div class="panel panel-info">
-              <!-- Default panel contents -->
-              <div class="panel-heading" style="text-align: center; font-weight: bold">CLASES DEL DÍA
-              </div>
-              <!-- Table -->
-              <div class="table-responsive">
-                <table class="table" style="text-align: center">
-                  <tr>
-                    <th style="text-align: center">HORA</th>
-                    <th style="text-align: center">CLASE</th>
-                    <th style="text-align: center">PROFESOR/A</th>
-                  </tr>
-                  {% for clase in datos.resultadoClase %}
-                    <tr>
-                      <td>{{ clase.hora }}</td>
-                      <td>{{ clase.tipo }}</td>
-                      <td>{{ clase.profesor }}</td>
-                    </tr>
-                  {% endfor %}
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% include 'FrontEndBundle:Widgets:WidgetTablesPrincipal.html.twig' with {
+      'empleados': datos.resultadoEmpleado,
+      'clientes': datos.resultadoCliente,
+      'clases': datos.resultadoClase} %}
     </div>
     <div class="col-xs-6" style="padding-top:40px">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title" style="font-weight: bold; text-align: center">ESTADÍSTICAS</h3>
-        </div>
-        <div class="panel-body" style="padding-top:20px; height:225px; font-weight: bold; text-align: center">
-          {% if datos.resultadoTotal > 0 %}
-            <div class="col-xs-2" style="padding-left:2%; padding-top:20px; font-size: 90px; color:blue; font-weight: bold">
-              {{ datos.resultadoTotal }}€
-            </div>
-          {% else %}
-            <div class="col-xs-2" style="padding-left:2%; padding-top:20px; font-size: 90px; color:red; font-weight: bold">
-              {{ datos.resultadoTotal }}€
-            </div>
-          {% endif %}
-          <div class="col-xs-1" style="padding-top:60px;" ><img style="margin-left:1000%; padding-left:40%"src="{{asset('images/estadisticaPc.png')}}" alt="Beneficio" /></div>
-          <div class="col-xs-2" style="padding-top:20px; padding-left: 40%; margin-left: 5%; font-size: 90px; color:blue; font-weight: bold">{{ datos.nuevosClientes }}</div>
-          <div class="col-xs-1"><img style="padding-top:350%; padding-left:400%"src="{{asset('images/ClienteNuevo.png')}}" alt="ClientesNuevos" /></div>
-        </div>
-      </div>
+      {% include 'FrontEndBundle:Widgets:WidgetStatsPrincipal.html.twig' with {
+      'resultado': datos.resultadoTotal,
+      'nuevosClientes': datos.nuevosClientes} %}
     </div>
   </row>
   <row>
     <div class="col-xs-6" style="padding-top:3%">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title" style="font-weight: bold; text-align: center">GASTOS INESPERADOS</h3>
-        </div>
-        <div class="panel-body" style="padding-top:25px; height:263px; font-weight: bold; text-align: center">
-          <div  class="col-xs-2" style="font-size: 150px; padding-left:3%; color:red; font-weight: bold">{{ datos.gastosInesperados.luz }}</div>
-          <div class="col-xs-1"><a id="enlaceSpinner" href="/gestor/web/app_dev.php/luz"><img src="{{asset('images/bombilla1.png')}}" style="padding-top:80px" alt="luz"></a></div>
-          <div   class="col-xs-2"style="font-size: 150px; padding-left:14%; color:red; font-weight: bold">{{ datos.gastosInesperados.proveedor }}</div>
-          <div class="col-xs-1"><a id="enlaceSpinner" href="/gestor/web/app_dev.php/proveedores"><img src="{{asset('images/servicios1.png')}}" style="padding-top:80px; padding-left:60px" alt="servicios"></a></div>
-          <div  class="col-xs-2" style="font-size: 150px; padding-left:22%; color:red; font-weight: bold">{{ datos.gastosInesperados.agua }}</div>
-          <div class="col-xs-1"><a id="enlaceSpinner" href="/gestor/web/app_dev.php/agua"><img src="{{asset('images/gota1.png')}}" style="padding-left:60px; padding-top:80px" alt="agua"></a></div>
-        </div>
-      </div>
+      {% include 'FrontEndBundle:Widgets:WidgetGastosInesperadosPrincipal.html.twig' with {
+      'luz': datos.gastosInesperados.luz,
+      'proveedor': datos.gastosInesperados.proveedor,
+      'agua': datos.gastosInesperados.agua} %}
     </div>
     <div class="col-xs-6" style="padding-top:3%">
-      <div class="panel panel-info">
-        <!-- Default panel contents -->
-        <div class="panel-heading" style="text-align: center; font-weight: bold">GRÁFICA 2017</div>
-        <div id="chart_div" style="padding-top:10px">
-        </div>
-      </div>
+      {% include 'FrontEndBundle:Widgets:WidgetGraficaPrincipal.html.twig' with {
+      'grafica': datos} %}
     </div>
   </row>
 </form>
