@@ -2,7 +2,6 @@
 {% block contenido%}
 <body background="{{ asset('images/triangleDown.jpg') }}" class="mifondo">
   <form  method="POST">
-    {% include 'FrontEndBundle:Widgets:navCabecera.html.twig' %}
     <row class="col-xs-12">
       {% include 'FrontEndBundle:Widgets:WidgetTableHorario.html.twig' with {
         'cabeceras': datos.tablaClase.cabeceras,
