@@ -10,17 +10,15 @@ class horarioService{
 
 	protected $datos;
 
-	public function __construct(Container $c){
+	public function __construct(EntityManager $em){
 
-		
-		$this->c = $c;
+		$this->em = $em;
 
 	}
 
-	public function getDatos($datosPost){
+	public function getDatos($datosPost = null,$ajax = false){
 
-		$em = $this->c->get('doctrine')->getEntityManager();
-		$conexion = $em->getConnection();
+		$conexion = $this->em->getConnection();
 		$sql = "
 		SELECT c.hora,tc.nombre as clase,c.profesor
 
@@ -38,6 +36,8 @@ class horarioService{
 
 		$this->datos["tablaClase"]["filas"] = $filas;
 		$this->datos["tablaClase"]["cabeceras"] = $cabeceras;
+
+		$this->datos = $ajax ? json_encode($this->datos) : $this->datos;
 
 		return $this->datos;
 

@@ -10,17 +10,16 @@ class empleadoService{
 
 	protected $datos;
 
-	public function __construct(Container $c){
+	public function __construct(EntityManager $em){
 
-		
-		$this->c = $c;
+		$this->em = $em;
 
 	}
 
 	public function getDatos($datosPost){
 
-		$em = $this->c->get('doctrine')->getEntityManager();
-		$conexion = $em->getConnection();
+		
+		$conexion = $this->em->getConnection();
 		$sql = "
 		SELECT nombre,apellidos,telefono,direccion,dni,salario
 
@@ -35,7 +34,7 @@ class empleadoService{
 		$this->datos["tablaEmpleados"]["filas"] = $filas;
 		$this->datos["tablaEmpleados"]["cabeceras"] = $cabeceras;
 
-		$qbBaja =  $em->getConnection();
+		$qbBaja =  $this->em->getConnection();
 		$sqlBaja = "
 
 		SELECT Count(status) as valor
@@ -50,7 +49,7 @@ class empleadoService{
 		$baja = $qbBaja->executeQuery($sqlBaja)->fetchAll()[0];
 		$this->datos["bajaEmpleados"]= $baja;
 
-		$qbAlta =  $em->getConnection();
+		$qbAlta =  $this->em->getConnection();
 		$sqlAlta = "
 
 		SELECT Count(status) as valor
@@ -66,7 +65,7 @@ class empleadoService{
 		$this->datos["altaEmpleados"]= $alta;
 
 
-		$qbVacaciones =  $em->getConnection();
+		$qbVacaciones = $this->em->getConnection();
 		$sqlVacaciones = "
 
 		SELECT Count(status) as valor

@@ -10,17 +10,15 @@ class luzService{
 
 	protected $datos;
 
-	public function __construct(Container $c){
+	public function __construct(EntityManager $em){
 
-		
-		$this->c = $c;
+		$this->em = $em;
 
 	}
 
 	public function getDatos($datosPost){
 
-		$em = $this->c->get('doctrine')->getEntityManager();
-		$conexion = $em->getConnection();
+		$conexion = $this->em->getConnection();
 		$sql = "
 		SELECT empresa,concepto,periodo,importe
 
@@ -37,7 +35,7 @@ class luzService{
 		$this->datos["tablaLuz"]["filas"] = $filas;
 		$this->datos["tablaLuz"]["cabeceras"] = $cabeceras;
 
-		$qbGasto =  $em->getConnection();
+		$qbGasto =  $this->em->getConnection();
 		$sqlGasto = "
 
 		SELECT Sum(importe) as valor

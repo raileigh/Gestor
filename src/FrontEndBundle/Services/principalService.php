@@ -10,15 +10,15 @@ class principalService{
 
 	protected $datos;
 
-	public function __construct(Container $c){
+	public function __construct(EntityManager $em){
 
-		$this->c = $c;
+		$this->em = $em;
 	}
 
 	public function getDatos(){
 
-		$em = $this->c->get('doctrine')->getEntityManager();
-        $conexion = $em->getConnection();
+		      
+        $conexion = $this->em->getConnection();
         $sql = "
         SELECT * 
 
@@ -98,7 +98,7 @@ class principalService{
         $inesperadoProveedor = $conexion->executeQuery($sql)->fetchAll()[0]["valor"];
         $this->datos["gastosInesperados"]["proveedor"] = $inesperadoProveedor;
 
-        $qbGastoExterno = $em->getConnection();
+        $qbGastoExterno = $this->em->getConnection();
         $fecha = new \Datetime();
         $fechas = $this->getFechas($fecha, "month");
         $sqlGastoExterno = "     
@@ -149,7 +149,7 @@ class principalService{
         $configSql = array("gasto", "ingreso");
         $grafica=[];
         foreach ($configSql as $tabla) {
-            $qbGrafica = $em->getConnection();
+            $qbGrafica = $this->em->getConnection();
             $sqlGrafica = "     
             
             SELECT month(periodo) as mes, 
@@ -203,7 +203,7 @@ class principalService{
 
     $this->datos["grafica"]= $datosGrafica;
 
-    $qbNewClientes = $em->getConnection();
+    $qbNewClientes = $this->em->getConnection();
     $fecha = new \Datetime();
     $fechas = $this->getFechas($fecha, "month");
     $sqlNewClientes = "

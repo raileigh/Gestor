@@ -1,47 +1,47 @@
 services:
   gestor.front.principalService:
     class: FrontEndBundle\Services\principalService
-    arguments: ["@service_container"]
+    arguments: ["@doctrine.orm.entity_manager"]
 
   gestor.front.empleadoService:
     class: FrontEndBundle\Services\empleadoService
-    arguments: ["@service_container"]
+    arguments: ["@doctrine.orm.entity_manager"]
 
   gestor.front.loginService:
     class: FrontEndBundle\Services\loginService
-    arguments: ["@service_container"]
+    arguments: ["@doctrine.orm.entity_manager"]
 
   gestor.front.logoutService:
     class: FrontEndBundle\Services\logoutService
-    arguments: ["@service_container"]
+    arguments: ["@doctrine.orm.entity_manager"]
 
   gestor.front.registrarService:
     class: FrontEndBundle\Services\registrarService
-    arguments: ["@service_container"]
+    arguments: ["@doctrine.orm.entity_manager"]
 
   gestor.front.comprobarUsuarioService:
     class: FrontEndBundle\Services\comprobarUsuarioService
-    arguments: ["@service_container"]
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
 
   gestor.front.clientesService:
     class: FrontEndBundle\Services\clientesService
-    arguments: ["@service_container"]
+    arguments: ["@doctrine.orm.entity_manager"]
   
   gestor.front.horarioService:
     class: FrontEndBundle\Services\horarioService
-    arguments: ["@service_container"]
+    arguments: ["@doctrine.orm.entity_manager"]
 
   gestor.front.luzService:
     class: FrontEndBundle\Services\luzService
-    arguments: ["@service_container"]
+    arguments: ["@doctrine.orm.entity_manager"]
 
   gestor.front.aguaService:
     class: FrontEndBundle\Services\aguaService
-    arguments: ["@service_container"]
+    arguments: ["@doctrine.orm.entity_manager"]
 
   gestor.front.proveedoresService:
     class: FrontEndBundle\Services\proveedoresService
-    arguments: ["@service_container"]
+    arguments: ["@doctrine.orm.entity_manager"]
   
   gestor.front.perfilService:
     class: FrontEndBundle\Services\perfilService

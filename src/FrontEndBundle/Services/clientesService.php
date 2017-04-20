@@ -10,17 +10,15 @@ class clientesService{
 
 	protected $datos;
 
-	public function __construct(Container $c){
+	public function __construct(EntityManager $em){
 
-		
-		$this->c = $c;
+		$this->em = $em;
 
 	}
 
 	public function getDatos($datosPost){
 
-		$em = $this->c->get('doctrine')->getEntityManager();
-		$conexion = $em->getConnection();
+		$conexion = $this->em->getConnection();
 		$sql = "
 		SELECT nombre,apellidos,telefono,direccion,dni
 
@@ -36,7 +34,7 @@ class clientesService{
 		$this->datos["tablaClientes"]["cabeceras"] = $cabeceras;
 
 
-		$qbStats =  $em->getConnection();
+		$qbStats = $this->em->getConnection();
 		$fecha = new \Datetime();
 		$fechas = $this->getFechas($fecha);
 		$sqlStats = "
@@ -51,11 +49,12 @@ class clientesService{
 		";
 
 
-		$Stats = $qbStats->executeQuery($sqlStats)->fetchAll()[0];
+		$stats = $qbStats->executeQuery($sqlStats)->fetchAll()[0];
+		
 		
 
-		$this->datos["statsClientes"] = $Stats;
-		$this->datos["statsClientes"] = $Stats;
+		$this->datos["statsClientes"]["alta"] = isset($stats["alta"]) ? $stats["alta"] : 0;
+		$this->datos["statsClientes"]["baja"]= isset($stats["baja"]) ? $stats["baja"] : 0;
 
 
 		return $this->datos;
