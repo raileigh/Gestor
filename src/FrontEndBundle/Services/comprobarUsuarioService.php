@@ -46,7 +46,7 @@ class comprobarUsuarioService{
 					//LLegados al else sabemos que el usuario está en la bd por eso $validar es true enviando la variable al controlador diciédole que lo envie a la vista correspondiente y creando la sesión del usuario seteándole el nombre a la sesión.
 					
 					$validar=true;
-					$session->set("usuario", array("nombre"=> $usuario->getNombre(),"id"=> $usuario->getId()));
+					$this->s->set("usuario", array("nombre"=> $usuario->getNombre(),"id"=> $usuario->getId()));
 					
 				}
 
