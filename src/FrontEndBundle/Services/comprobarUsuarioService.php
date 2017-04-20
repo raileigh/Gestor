@@ -10,19 +10,19 @@ class comprobarUsuarioService{
 	protected $validar;
 	protected $registrar;
 
-	public function __construct(Container $c){
+	public function __construct(Session $s, EntityManager $em){
 
 		
-		$this->c = $c;
+		$this->s = $s;
+		$this->em = $em;
 
 	}
 
 	public function comprobarUsuario($datosPost){
 
 		// Comprobar sesion
-		$session = $this->c->get("session");// creo la variable sesión y le digo que me captura la sesion que esta abierta
 
-		$nombre = $session->get("usuario")["nombre"];
+		$nombre = $this->s->get("usuario")["nombre"];
 		
 		if ($nombre==null) {
 
@@ -33,8 +33,8 @@ class comprobarUsuarioService{
 
 			}else{
 			//aquí tengo que comprobar que el tio existe en BD para meterlo  a principal
-				$em=$this->c->get('doctrine')->getEntityManager();
-				$usuario = $em->getRepository("BackEndBundle:Usuario")->findOneBy(array("nombre"=> $datosPost["nombre"],"password"=> $datosPost["password"]));
+				
+				$usuario = $this->em->getRepository("BackEndBundle:Usuario")->findOneBy(array("nombre"=> $datosPost["nombre"],"password"=> $datosPost["password"]));
 				//Tengo que saber si es true o falso para mandarlo al controlador volviendo hacer un if else
 				
 				if (is_object($usuario)==false){
