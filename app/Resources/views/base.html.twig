@@ -12,19 +12,22 @@
   <script src="{{ asset('js/app.js') }}"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-
-
 </head>
 
 <body>
 
+  {% if datos is defined %}
+    {% include 'FrontEndBundle:Widgets:navCabecera.html.twig' %}
+  {% else %}
+  {% endif %}
 
  {% block contenido %}
-
-
-
  {% endblock %}
 
- <div class="spinner" style="position:absolute;display:none;margin-left:25%;margin-top:25%;"><img src="{{asset('images/carga.gif')}}"</div>
+ <div class="spinner" 
+      style="position:absolute;display:none;margin-left:25%;margin-top:25%;">
+      <img src="{{asset('images/carga.gif')}}">
+  </div>
+
 </body>
 </html>
