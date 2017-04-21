@@ -16,9 +16,9 @@
 
 <body>
 
-  {% if "login" in app.request.uri %}
-  {% else %}
+  {% if datos is defined %}
     {% include 'FrontEndBundle:Widgets:navCabecera.html.twig' %}
+  {% else %}
   {% endif %}
 
  {% block contenido %}
