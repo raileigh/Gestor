@@ -4,18 +4,27 @@ namespace FrontEndBundle\Services;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\DependencyInjection\ContainerInterface as Container;
+use FrontEndBundle\Service\widgetsVistaService;
 
 class principalService{
 
 	protected $datos;
 
-	public function __construct(EntityManager $em){
+	public function __construct(Session $s, EntityManager $em, widgetsVistaService $wv){
 
 		$this->em = $em;
+        $this->s = $s;
+        $this->wv = $wv;
 	}
 
 	public function getDatos(){
+
+        $listadoWidget = $this->wv->getListadoServicesWidgets();
+
+        foreach ($listadoWidget as $widget => $serviceWidget) {
+            
+            $this->datos[$widget] = $serviceWidget->getDatos();
+        }
 
 		      
         $conexion = $this->em->getConnection();

@@ -30,6 +30,24 @@ class DefaultController extends Controller
         
         
         if ($comprobarUsuario == true){
+
+        //Cogemos listado de los widgets de la bd
+
+        $widgetsVistaService = $this->get("gestor.front.widgetsVistaService");
+        $listadoWidgets = $widgetsVistaService->getListadoWidgets($slug);
+
+        //creamos la array que contendrán los widgets
+        $servicesWidgets = [];
+
+        
+        // inyectamos los servicios de cada wiudget en cada array
+        foreach ($listadowidgets as $widget) {
+
+         $servicesWidgets[$widget] = $this->get("gestor.front.".$widget..$slug."Service");
+        }
+
+        $widgetsVistaService->setListadoServicesWidgets($servicesWidgets);
+        
         
         
         $destino = $this->get("gestor.front.".$slug."Service")->getTwig();

@@ -47,6 +47,60 @@ services:
     class: FrontEndBundle\Services\perfilService
     arguments: ["@session", "@doctrine.orm.entity_manager"]
 
+  gestor.front.activoEmpleadoService:
+    class: FrontEndBundle\Services\activoEmpleadoService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.bajaEmpleadoService:
+    class: FrontEndBundle\Services\bajaEmpleadoService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.bajasClientesService:
+    class: FrontEndBundle\Services\bajasClientesService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.estadisticasPrincipalService:
+    class: FrontEndBundle\Services\estadisticasPrincipalService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.gastoAguaService:
+    class: FrontEndBundle\Services\gastoAguaService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.gastoLuzService:
+    class: FrontEndBundle\Services\gastoLuzService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.gastoProveedoresService:
+    class: FrontEndBundle\Services\gastoProveedoresService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.gastosInesperadosPrincipalService:
+    class: FrontEndBundle\Services\gastosInesperadosPrincipalService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.graficaPrincipalService:
+    class: FrontEndBundle\Services\graficaPrincipalService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.nuevosClientesService:
+    class: FrontEndBundle\Services\nuevosClientesService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.tablasPrincipalService:
+    class: FrontEndBundle\Services\tablasPrincipalService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.vacacionesEmpleadoService:
+    class: FrontEndBundle\Services\vacacionesEmpleadoService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.widgetsVistaService:
+    class: FrontEndBundle\Services\widgetsVistaService
+    arguments: ["@session", "@doctrine.orm.entity_manager", "@gestor.front.widgetsVistaService"]
+
+
+
 
 
 
