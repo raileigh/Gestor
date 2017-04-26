@@ -72,14 +72,14 @@
   <row>
     <div class="col-xs-6">
       {% include 'FrontEndBundle:Widgets:WidgetTablesPrincipal.html.twig' with {
-      'empleados': datos.resultadoEmpleado,
-      'clientes': datos.resultadoCliente,
-      'clases': datos.resultadoClase} %}
+      'empleados': datos.tablas.resultadoEmpleado,
+      'clientes': datos.tablas.resultadoCliente,
+      'clases': datos.tablas.resultadoClase} %}
     </div>
     <div class="col-xs-6" style="padding-top:40px">
       {% include 'FrontEndBundle:Widgets:WidgetStatsPrincipal.html.twig' with {
-      'resultado': datos.resultadoTotal,
-      'nuevosClientes': datos.nuevosClientes} %}
+      'resultado': datos.estadisticas.resultadoTotal,
+      'nuevosClientes': datos.estadisticas.nuevosClientes} %}
     </div>
   </row>
   <row>
@@ -91,7 +91,7 @@
     </div>
     <div class="col-xs-6" style="padding-top:3%">
       {% include 'FrontEndBundle:Widgets:WidgetGraficaPrincipal.html.twig' with {
-      'grafica': datos} %}
+      'grafica': datos.grafica} %}
     </div>
   </row>
 </form>

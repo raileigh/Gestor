@@ -35,11 +35,11 @@
     </nav>
     <row class="col-xs-12">
       {% include 'FrontEndBundle:Widgets:WidgetTableAgua.html.twig' with {
-        'cabeceras': datos.tablaAgua.cabeceras,
-        'filas': datos.tablaAgua.filas} %}
+        'cabeceras': datos.aguaTabla.cabeceras,
+        'filas': datos.aguaTabla.filas} %}
     <div class="col-xs-6" style="margin-left:25%; margin-top:5%">
       {% include 'FrontEndBundle:Widgets:WidgetGastoEnCursoAgua.html.twig' with {
-        'gastoEnCurso': datos.gastoAgua.valor} %}
+        'gastoEnCurso': datos.aguaGasto.valor} %}
     </div>
   </row>
 </form>

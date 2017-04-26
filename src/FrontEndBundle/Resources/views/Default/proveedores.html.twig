@@ -35,11 +35,11 @@
     </nav>
     <row class="col-xs-12">
       {% include 'FrontEndBundle:Widgets:WidgetTableProveedores.html.twig' with {
-        'cabeceras': datos.tablaProveedores.cabeceras,
-        'filas': datos.tablaProveedores.filas} %}
+        'cabeceras': datos.proveedoresTabla.cabeceras,
+        'filas': datos.proveedoresTabla.filas} %}
     <div class="col-xs-6" style="margin-left:25%; margin-top:5%">
       {% include 'FrontEndBundle:Widgets:WidgetGastoEnCursoProveedores.html.twig' with {
-        'gastoEnCurso': datos.gastoProveedores.valor} %}
+        'gastoEnCurso': datos.proveedoresGasto.valor} %}
     </div>
   </row>
 </form>

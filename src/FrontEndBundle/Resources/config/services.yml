@@ -1,11 +1,7 @@
 services:
-  gestor.front.principalService:
-    class: FrontEndBundle\Services\principalService
-    arguments: ["@doctrine.orm.entity_manager"]
-
-  gestor.front.empleadoService:
-    class: FrontEndBundle\Services\empleadoService
-    arguments: ["@doctrine.orm.entity_manager"]
+  gestor.front.vistaService:
+    class: FrontEndBundle\Services\vistaService
+    arguments: ["@doctrine.orm.entity_manager", "@gestor.front.widgetsVistaService"]
 
   gestor.front.loginService:
     class: FrontEndBundle\Services\loginService
@@ -21,30 +17,6 @@ services:
 
   gestor.front.comprobarUsuarioService:
     class: FrontEndBundle\Services\comprobarUsuarioService
-    arguments: ["@session", "@doctrine.orm.entity_manager"]
-
-  gestor.front.clientesService:
-    class: FrontEndBundle\Services\clientesService
-    arguments: ["@doctrine.orm.entity_manager"]
-  
-  gestor.front.horarioService:
-    class: FrontEndBundle\Services\horarioService
-    arguments: ["@doctrine.orm.entity_manager"]
-
-  gestor.front.luzService:
-    class: FrontEndBundle\Services\luzService
-    arguments: ["@doctrine.orm.entity_manager"]
-
-  gestor.front.aguaService:
-    class: FrontEndBundle\Services\aguaService
-    arguments: ["@doctrine.orm.entity_manager"]
-
-  gestor.front.proveedoresService:
-    class: FrontEndBundle\Services\proveedoresService
-    arguments: ["@doctrine.orm.entity_manager"]
-  
-  gestor.front.perfilService:
-    class: FrontEndBundle\Services\perfilService
     arguments: ["@session", "@doctrine.orm.entity_manager"]
 
   gestor.front.activoEmpleadoService:
@@ -63,16 +35,16 @@ services:
     class: FrontEndBundle\Services\estadisticasPrincipalService
     arguments: ["@session", "@doctrine.orm.entity_manager"]
 
-  gestor.front.gastoAguaService:
-    class: FrontEndBundle\Services\gastoAguaService
+  gestor.front.aguaGastoAguaService:
+    class: FrontEndBundle\Services\aguaGastoAguaService
     arguments: ["@session", "@doctrine.orm.entity_manager"]
 
-  gestor.front.gastoLuzService:
-    class: FrontEndBundle\Services\gastoLuzService
+  gestor.front.luzGastoLuzService:
+    class: FrontEndBundle\Services\luzGastoLuzService
     arguments: ["@session", "@doctrine.orm.entity_manager"]
 
-  gestor.front.gastoProveedoresService:
-    class: FrontEndBundle\Services\gastoProveedoresService
+  gestor.front.proveedoresGastoProveedoresService:
+    class: FrontEndBundle\Services\proveedoresGastoProveedoresService
     arguments: ["@session", "@doctrine.orm.entity_manager"]
 
   gestor.front.gastosInesperadosPrincipalService:
@@ -97,10 +69,32 @@ services:
 
   gestor.front.widgetsVistaService:
     class: FrontEndBundle\Services\widgetsVistaService
-    arguments: ["@session", "@doctrine.orm.entity_manager", "@gestor.front.widgetsVistaService"]
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.aguaTablaAguaService:
+    class: FrontEndBundle\Services\aguaTablaAguaService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.luzTablaLuzService:
+    class: FrontEndBundle\Services\luzTablaLuzService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.proveedoresTablaProveedoresService:
+    class: FrontEndBundle\Services\proveedoresTablaProveedoresService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.empleadoTablaEmpleadoService:
+    class: FrontEndBundle\Services\empleadoTablaEmpleadoService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.clienteTablaClientesService:
+    class: FrontEndBundle\Services\clienteTablaClientesService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
 
 
-
+  gestor.front.horarioTablaHorarioService:
+    class: FrontEndBundle\Services\horarioTablaHorarioService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
 
 
 

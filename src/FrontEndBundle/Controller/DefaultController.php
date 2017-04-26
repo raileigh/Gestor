@@ -41,17 +41,17 @@ class DefaultController extends Controller
 
         
         // inyectamos los servicios de cada wiudget en cada array
-        foreach ($listadowidgets as $widget) {
-
-         $servicesWidgets[$widget] = $this->get("gestor.front.".$widget..$slug."Service");
+        foreach ($listadoWidgets as $widget) {
+        //widget[tablas][gastosInes]
+        $servicesWidgets[$widget['nombreWidget']] = $this->get("gestor.front.".$widget['nombreWidget'].$slug."Service");
         }
 
         $widgetsVistaService->setListadoServicesWidgets($servicesWidgets);
         
         
         
-        $destino = $this->get("gestor.front.".$slug."Service")->getTwig();
-        $datos = $this->get("gestor.front.".$slug."Service")->getDatos($datosPost);
+        $destino = $this->get("gestor.front.vistaService")->getTwig($slug);
+        $datos = $this->get("gestor.front.vistaService")->getDatos($datosPost);
         $datos = array("datos" => $datos);
        
 
@@ -81,19 +81,18 @@ class DefaultController extends Controller
             if($slug==="registrar")
             {
                 
-                $destino = $this->get("gestor.front.registrarService")->getTwig();
+                $destino = $this->get("gestor.front.vistaService")->getTwig($slug = "registrar");
                 $datos = [];
 
             }else{
 
-               $destino = $this->get("gestor.front.loginService")->getTwig();
+               $destino = $this->get("gestor.front.vistaService")->getTwig($slug = "login");
                $datos = [];
                 
             }
 
 
          }
-
          return $this->$tipoRetorno($destino,$datos);
     }
 

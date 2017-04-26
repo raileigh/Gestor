@@ -7,9 +7,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 
 
-class activoEmpleadoService{
-
-	protected $alta;
+class luzGastoLuzService{
 
 	public function __construct(Session $s, EntityManager $em){
 
@@ -21,20 +19,23 @@ class activoEmpleadoService{
 	public function getDatos(){
 
 
-		$qbAlta =  $this->em->getConnection();
-		$sqlAlta = "
+		$qbGasto =  $this->em->getConnection();
+		$sqlGasto = "
 
-		SELECT Count(status) as valor
+		SELECT Sum(importe) as valor
 
-		FROM empleado
+		FROM gasto
 
-		WHERE status = 2
+		WHERE tipo = 2  AND periodo BETWEEN '2017-01-01' AND '2017-12-31'
+
+		
 
 		";
 
 
-		$alta = $qbAlta->executeQuery($sqlAlta)->fetchAll()[0];
-		return $alta;
+		$gasto = $qbGasto->executeQuery($sqlGasto)->fetchAll()[0];
+
+		return $gasto;
 
 
 	}

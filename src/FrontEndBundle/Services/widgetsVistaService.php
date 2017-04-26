@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class widgetsVistaService{
 
-	protected $listadoServicesWidgets
+	protected $listadoServicesWidgets;
 
 	public function __construct(Session $s, EntityManager $em){
 
@@ -21,9 +21,9 @@ class widgetsVistaService{
 	public function getListadoWidgets($slug){
 
 		
-        $conexion = $em->getConnection();
+        $conexion = $this->em->getConnection();
         $sql = "
-        SELECT widget
+        SELECT widget as nombreWidget
 
         FROM widget
 
