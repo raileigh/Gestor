@@ -4,15 +4,15 @@
   <form method="POST">
     <row class="col-xs-12">
       {% include 'FrontEndBundle:Widgets:WidgetTableClientes.html.twig' with {
-        'cabeceras': datos.tablaClientes.cabeceras,
-        'filas': datos.tablaClientes.filas} %}
+        'cabeceras': datos.clienteTabla.cabeceras,
+        'filas': datos.clienteTabla.filas} %}
     <div class="col-xs-6">
       {% include 'FrontEndBundle:Widgets:WidgetNuevosClientes.html.twig' with {
-        'nuevosClientes': datos.statsClientes.alta} %}
+        'nuevosClientes': datos.nuevos} %}
     </div>
     <div class="col-xs-6">
       {% include 'FrontEndBundle:Widgets:WidgetBajaClientes.html.twig' with {
-        'bajaClientes': datos.statsClientes.baja} %}
+        'bajaClientes': datos.bajas} %}
     </div>
   </row>
 </form>

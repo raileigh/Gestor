@@ -4,19 +4,19 @@
 	<form method="POST">
     <row class="col-xs-12">
       {% include 'FrontEndBundle:Widgets:WidgetTableEmpleados.html.twig' with {
-        'cabeceras': datos.tablaEmpleados.cabeceras,
-        'filas': datos.tablaEmpleados.filas} %}
+        'cabeceras': datos.empleadoTabla.cabeceras,
+        'filas': datos.empleadoTabla.filas} %}
     <div class="col-xs-4">
       {% include 'FrontEndBundle:Widgets:WidgetBajaEmpleados.html.twig' with {
-        'baja': datos.bajaEmpleados.valor} %}
+        'baja': datos.baja.valor} %}
     </div>
     <div class="col-xs-4">
       {% include 'FrontEndBundle:Widgets:WidgetActivoEmpleados.html.twig' with {
-        'activo': datos.altaEmpleados.valor} %}
+        'activo': datos.activo.valor} %}
     </div>
     <div class="col-xs-4">
       {% include 'FrontEndBundle:Widgets:WidgetVacacionesEmpleados.html.twig' with {
-        'vacaciones': datos.vacacionesEmpleados.valor} %}
+        'vacaciones': datos.vacaciones.valor} %}
     </div>
   </row>
 </form>

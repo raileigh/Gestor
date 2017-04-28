@@ -4,11 +4,11 @@
   <form method="POST">
     <row class="col-xs-12">
       {% include 'FrontEndBundle:Widgets:WidgetTableLuz.html.twig' with {
-        'cabeceras': datos.tablaLuz.cabeceras,
-        'filas': datos.tablaLuz.filas} %}
+        'cabeceras': datos.luzTabla.cabeceras,
+        'filas': datos.luzTabla.filas} %}
     <div class="col-xs-6" style="margin-left:25%; margin-top:5%">
       {% include 'FrontEndBundle:Widgets:WidgetGastoEnCursoLuz.html.twig' with {
-        'gastoEnCurso': datos.gastoLuz.valor} %}
+        'gastoEnCurso': datos.luzGasto.valor} %}
     </div>
   </row>
 </form>

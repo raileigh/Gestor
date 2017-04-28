@@ -30,10 +30,28 @@ class DefaultController extends Controller
         
         
         if ($comprobarUsuario == true){
+
+        //Cogemos listado de los widgets de la bd
+
+        $widgetsVistaService = $this->get("gestor.front.widgetsVistaService");
+        $listadoWidgets = $widgetsVistaService->getListadoWidgets($slug);
+
+        //creamos la array que contendrán los widgets
+        $servicesWidgets = [];
+
+        
+        // inyectamos los servicios de cada wiudget en cada array
+        foreach ($listadoWidgets as $widget) {
+        //widget[tablas][gastosInes]
+        $servicesWidgets[$widget['nombreWidget']] = $this->get("gestor.front.".$widget['nombreWidget'].$slug."Service");
+        }
+
+        $widgetsVistaService->setListadoServicesWidgets($servicesWidgets);
         
         
-        $destino = $this->get("gestor.front.".$slug."Service")->getTwig();
-        $datos = $this->get("gestor.front.".$slug."Service")->getDatos($datosPost);
+        
+        $destino = $this->get("gestor.front.vistaService")->getTwig($slug);
+        $datos = $this->get("gestor.front.vistaService")->getDatos($datosPost);
         $datos = array("datos" => $datos);
        
 
@@ -63,19 +81,18 @@ class DefaultController extends Controller
             if($slug==="registrar")
             {
                 
-                $destino = $this->get("gestor.front.registrarService")->getTwig();
+                $destino = $this->get("gestor.front.vistaService")->getTwig($slug = "registrar");
                 $datos = [];
 
             }else{
 
-               $destino = $this->get("gestor.front.loginService")->getTwig();
+               $destino = $this->get("gestor.front.vistaService")->getTwig($slug = "login");
                $datos = [];
                 
             }
 
 
          }
-
          return $this->$tipoRetorno($destino,$datos);
     }
 
