@@ -25,7 +25,7 @@ class logoutService{
 
 	public function getTwig(){
 
-		echo "entra en el getTwig";
+		
 
 		return "FrontEndBundle:Default:login.html.twig";
 	}

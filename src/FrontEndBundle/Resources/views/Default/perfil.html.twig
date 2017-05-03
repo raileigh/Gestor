@@ -3,42 +3,8 @@
 <body background="{{ asset('images/triangleDown.jpg') }}" class="mifondo">
   <form method="POST">
     <row class="col-xs-12" style="text-align:center">
-      <div class="col-xs-12"style="padding-top:5%">
-        <input type="hidden" name="perfil" value="perfil">
-        <h2>DATOS DE USUARIO</h2>
-        <img src="{{asset('images/usuario2.png')}}" alt="yo!" style="padding:7px" class="rounded-circle"/>
-        {% for usuario in datos.usuario %}
-          <h3>NOMBRE DE USUARIO</h3>
-          <div class="col-xs-3" style="margin-left:37%">
-            <input id="input" type="text" class="form-control" style="text-align:center" placeholder="Nombre de Usuario" aria-describedby="basic-addon1"  name="nombre" value="{{ usuario.nombre }}" disabled>
-          </div>
-          <br>
-          <h3>CORREO ELECTRÓNICO</h3>
-          <div class="col-xs-3" style="margin-left:37%">
-            <input id="input" type="text" class="form-control" style="text-align:center" placeholder="Correo Electrónico" aria-describedby="basic-addon1" name="correo" value="{{ usuario.correo }}" disabled>
-          </div>
-          <br>
-          <h3>EMPRESA</h3>
-          <div class="col-xs-3" style="margin-left:37%">
-            <input  id="input"type="text" class="form-control" style="text-align:center" placeholder="Empresa" aria-describedby="basic-addon1"  name="empresa" value="{{ usuario.empresa }}" disabled>
-          </div>
-          <br>
-          <h3>DIRECCIÓN</h3>
-          <div class="col-xs-3" style="margin-left:37%">
-            <input id="input" type="text" class="form-control" style="text-align:center" placeholder="Dirección" aria-describedby="basic-addon1" name="direccion" value="{{ usuario.direccion }}" disabled>
-          </div>
-          <br>
-          <h3>CÓDIGO POSTAL</h3>
-          <div class="col-xs-3" style="margin-left:37%">
-            <input id="input" type="text" class="form-control" style="text-align:center" placeholder="Código Postal" aria-describedby="basic-addon1" name="codigoPostal" value="{{ usuario.codigoPostal }}" disabled>
-          </div>
-          <br>
-          <h3>CIUDAD</h3>
-          <div class="col-xs-3" style="margin-left:37%">
-            <input id="input" type="text" class="form-control" style="text-align:center" placeholder="Ciudad" aria-describedby="basic-addon1"  name="ciudad" value="{{ usuario.ciudad }}" disabled>
-          </div>
-        {% endfor %}
-      </div>
+       {% include 'FrontEndBundle:Widgets:WidgetTablaPerfil.html.twig' with {
+        'resultado': datos.tabla} %}
       <div class="col-xs-3" style="margin-left:37%; padding-top:2%">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
           <div class="btn-group" role="group">

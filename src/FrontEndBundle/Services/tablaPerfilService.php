@@ -4,9 +4,9 @@ namespace FrontEndBundle\Services;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
-class perfilService{
+
+class tablaPerfilService{
 
 	protected $datos;
 
@@ -18,7 +18,7 @@ class perfilService{
 
 	}
 
-	public function getDatos($datosPost){
+	public function getDatos(){
 
 		if (isset($datosPost["perfil"])) //hare un campo hidden con el nombre perfil en el formulario de perfil que sera en chivato que me dice si viene de perfil o ha puesto a mano la url
 			{
@@ -40,16 +40,9 @@ class perfilService{
 		$id = $this->s->get("usuario")["id"];
 		$sql = "SELECT * FROM usuario WHERE id = ".$id;
 		$resultado = $conexion->executeQuery($sql)->fetchAll();
-		$this->datos["usuario"] = $resultado;
+		//$this->datos["usuario"] = $resultado;
+		return $resultado;
 
-		return $this->datos;
-	}
-
-	
-	public function getTwig(){
-
-		
-		return "FrontEndBundle:Default:perfil.html.twig";
 	}
 
 }

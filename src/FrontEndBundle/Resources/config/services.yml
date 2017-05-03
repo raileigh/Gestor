@@ -96,6 +96,10 @@ services:
     class: FrontEndBundle\Services\horarioTablaHorarioService
     arguments: ["@session", "@doctrine.orm.entity_manager"]
 
+  gestor.front.tablaPerfilService:
+    class: FrontEndBundle\Services\tablaPerfilService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
 
 
 
