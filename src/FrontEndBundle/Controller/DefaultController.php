@@ -19,6 +19,7 @@ class DefaultController extends Controller
 
        // Servicios de comprobación
         $datosPost = $this->get('request')->request->all();
+        
         $comprobarUsuario = $this->get("gestor.front.comprobarUsuarioService")->comprobarUsuario($datosPost);
        
        // Valores por defecto
@@ -31,51 +32,46 @@ class DefaultController extends Controller
         
         if ($comprobarUsuario == true){
 
-        //Cogemos listado de los widgets de la bd
-
-        $widgetsVistaService = $this->get("gestor.front.widgetsVistaService");
-        $listadoWidgets = $widgetsVistaService->getListadoWidgets($slug);
-
-        //creamos la array que contendrán los widgets
-        $servicesWidgets = [];
-
-        
-        // inyectamos los servicios de cada wiudget en cada array
-        foreach ($listadoWidgets as $widget) {
-        //widget[tablas][gastosInes]
-        $servicesWidgets[$widget['nombreWidget']] = $this->get("gestor.front.".$widget['nombreWidget'].$slug."Service");
-        }
-
-        $widgetsVistaService->setListadoServicesWidgets($servicesWidgets);
-        
-        
-        
-        $destino = $this->get("gestor.front.vistaService")->getTwig($slug);
-        $datos = $this->get("gestor.front.vistaService")->getDatos($datosPost);
-        $datos = array("datos" => $datos);
-       
-
             if (isset($datosPost["login"])||$slug==="login") //hare un campo hidden con el nombre login en el formulario de login que sera en chivato que me dice si viene de login o ha puesto a mano la url
             {
                 $tipoRetorno = "redirectToRoute"; 
                 $destino = "front";
                 $datos = array("slug"=>"principal");
              
+            } else{
+
+                //Cogemos listado de los widgets de la bd
+
+                $widgetsVistaService = $this->get("gestor.front.widgetsVistaService");
+                $listadoWidgets = $widgetsVistaService->getListadoWidgets($slug);
+
+                //creamos la array que contendrán los widgets
+                $servicesWidgets = [];
+
+                
+                // inyectamos los servicios de cada wiudget en cada array
+                foreach ($listadoWidgets as $widget) {
+                //widget[tablas][gastosInes]
+                $servicesWidgets[$widget['nombreWidget']] = $this->get("gestor.front.".$widget['nombreWidget'].$slug."Service");
+                }
+
+                $widgetsVistaService->setListadoServicesWidgets($servicesWidgets);
+                $this->get("gestor.front.vistaService")->setPostEnSesion($datosPost);
+                $destino = $this->get("gestor.front.vistaService")->getTwig($slug);
+                $datos = $this->get("gestor.front.vistaService")->getDatos($datosPost);
+                $datos = array("datos" => $datos);
+            
+                if ($slug=="logout") {
+
+                    $session = $this->get("session");
+                    $session->clear();
+                    $tipoRetorno = "redirectToRoute"; 
+                    $destino = "front";
+                    $datos = array("slug"=>"login");           
+
+                }
             }
 
-           
-            
-            if ($slug=="logout") {
-
-                $session = $this->get("session");
-                $session->clear();
-                $tipoRetorno = "redirectToRoute"; 
-                $destino = "front";
-                $datos = array("slug"=>"login");           
-
-             }
-
-     
         }else{
             
             if($slug==="registrar")
@@ -90,9 +86,8 @@ class DefaultController extends Controller
                $datos = [];
                 
             }
-
-
          }
+         
          return $this->$tipoRetorno($destino,$datos);
     }
 

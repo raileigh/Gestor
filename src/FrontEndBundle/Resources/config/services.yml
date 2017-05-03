@@ -1,7 +1,7 @@
 services:
   gestor.front.vistaService:
     class: FrontEndBundle\Services\vistaService
-    arguments: ["@doctrine.orm.entity_manager", "@gestor.front.widgetsVistaService"]
+    arguments: ["@session","@doctrine.orm.entity_manager", "@gestor.front.widgetsVistaService"]
 
   gestor.front.loginService:
     class: FrontEndBundle\Services\loginService
@@ -94,6 +94,10 @@ services:
 
   gestor.front.horarioTablaHorarioService:
     class: FrontEndBundle\Services\horarioTablaHorarioService
+    arguments: ["@session", "@doctrine.orm.entity_manager"]
+
+  gestor.front.tablaPerfilService:
+    class: FrontEndBundle\Services\tablaPerfilService
     arguments: ["@session", "@doctrine.orm.entity_manager"]
 
 

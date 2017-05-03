@@ -3,14 +3,16 @@
 namespace FrontEndBundle\Services;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 class vistaService{
 
+    protected $sesion;
 	protected $datos;
 
-	public function __construct(EntityManager $em, widgetsVistaService $wv){
-
+	public function __construct(Session $s, EntityManager $em, widgetsVistaService $wv){
+        $this->s = $s;
 		$this->em = $em;
         $this->wv = $wv;
     }
@@ -30,6 +32,9 @@ class vistaService{
 
     }
 
+    public function setPostEnSesion($datosPost){
+        $this->s->set("datosPost",$datosPost);
+    }
 
     public function getTwig($slug){
 
