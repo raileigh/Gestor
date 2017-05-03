@@ -20,6 +20,8 @@ class tablaPerfilService{
 
 	public function getDatos(){
 
+		$datosPost = $this->s->get("datosPost");
+
 		if (isset($datosPost["perfil"])) //hare un campo hidden con el nombre perfil en el formulario de perfil que sera en chivato que me dice si viene de perfil o ha puesto a mano la url
 			{
 				$conexionActualizar = $this->em->getConnection();
